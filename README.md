@@ -8,6 +8,10 @@ HandyDandy is an app for people in need of home maintenance or have desires to u
 
 ## [User Stories](https://github.com/Skywalker401/handydandy/issues/2)
 
+## Domain Model
+
+![Domain Model](imgs/dataflow.png)
+
 ## Database Schema Diagram
 
 `User schema`

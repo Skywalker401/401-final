@@ -2,61 +2,59 @@
 
 ## Vision
 
-Minimum Length: 3-5 sentences
 
 What is the vision of this product?
+- HandyDandy's vision is to provide a one-stop-shop for homeowners seeking to perform maintenance or upgrades to their home, as well as give professionals and amateurs the ability to connect with people in their community.
 
 What pain point does this project solve?
+- HandyDandy allows users to track and schedule upgrades or preventative maintenance on their homes, either by choosing to DIY or contacting someone with experience.
 
 Why should we care about your product?
+- HandyDandy makes home maintenance and upgrades simple and easy while supporting the local community and small businesses.
 
 ## Scope (In/Out)
 
-- IN - What will your product do
-Describe the individual features that your product will do.
-High overview of each. Only need to list 4-5
-Example:
-The web app will provide information to the users about all the different Cat Cafe’s in the area
-The web app will provide both walking and driving directions to each of the destinations
-Users will be able to “Star” their favorite shops.
-Each shop will contain reviews of the customer’s experiences
-- OUT - What will your product not do.
-These should be features that you will make very clear from the beginning that you will not do during development. These should be limited and very few. Pick your battles wisely. This should only be 1 or 2 things. Example: My website will never turn into an IOS or Android app.
+- IN - Key Features:
+  - Allow users to sign-up and login securely
+  - Allows users to track and schedule maintenance and/or upgrades to their home
+    - Users are able to choose to DIY or contact a Pro
+  - If a user chooses DIY, they are presented with video and written instruction
+  - If a user chooses a Pro, they are presented with a list of experienced people in their area
+  - Pro Users will be able to add category-specific competencies to their profile so users can find and hire them
+
+- OUT - This app does NOT:
+- Does not handle monetary transactions
+- Does not handle disputes between parties
+- Does not handle licensing, bonding, or insurance
 
 ### Minimum Viable Product
 
-What will your MVP functionality be?
-
-What are your stretch goals?
+1. Ability for users and pros to sign up
+2. Tracking maintenance requirements/upgrades completed with email reminders
+3. Being presented with an option to choose DIY or PRO
+4. Ability to search for pros with in their metro area, down to the neighborhood level
+5. If choosing DIY, user selects category/task and is presented with a how-to video and a set of step by step instructions
 
 ### Stretch
-
-What stretch goals are you going to aim for?
+1. "Like/Dislike" functionality to indicate to users how many people have used a particular Pro and had a positive or negative experience. User side will display a percentage.
+2. Map integration, which will provide users the ability to see Pros near them 
+3. Web-scraping to look up product by brand/serial number to find recommended maintenance schedule
 
 ## Functional Requirements
+- An admin can create and delete user accounts
+- A user can update their profile information and create/modify their maintenance schedule or upgrades
+- A user can find and select a Pro in their area 
+- A Pro User can input their competencies
+- A user can select DIY (video or step-by-step instruction)
+- A user can log in/out
 
-List the functionality of your product. This will consist of tasks such as the following:
-
-An admin can create and delete user accounts
-A user can update their profile information
-A user can search all of the products in the inventory
 
 ### Data Flow
+The user will first sign-up or login, where their information will be authenticated by the backend. After authentication, the backend will then fetch data from the DB, format it as required, and send to the front-end, where it will be displayed to the user as a personalized dashboard. The user will then be able to decide if they would like to create, update, or delete a maintenance or upgrade task. This action performs a CRUD operation on the database through the API.
 
-Describe the flow of data in your application. Write out what happens from the time the user begins using the app to the time the user is done with the app. Think about the “Happy Path” of the application. Describe through visuals and text what requests are made, and what data is processed, in addition to any other details about how the user moves through the site.
+## Non-Functional Requirements
 
-## Non-Functional Requirements (301 & 401 only)
+- **Usability:** the app functionality is imperative to ensure it works at every level. It needs to load quickly (15 seconds or less), which will be done through choosing an appropriate cloud platform (AWS, Azure, Vercel, etc.). Once a platform is chosen and the MVP achieved, we can test by accessing the app through multiple browsers.
 
-Non-functional requirements are requirements that are not directly related to the functionality of the application but still important to the app.
+- **Testability:** the app will have a minimum test-coverage of 80%. This will be achieved by performing basic, manual, functionality testing on each new function as it is written. In addition, the app will be covered by automated unit tests throughout the project.
 
-Examples include:
-
-Security
-Usability
-Testability
-etc….
-Pick 2 non-functional requirements and describe their functionality in your application.
-
-If you are stuck on what non-functional requirements are, do a quick online search and do some research. Write a minimum of 3-5 sentences to describe how the non-functional requirements fits into your app.
-
-You MUST describe what the non-functional requirement is and how it will be implemented. Simply saying “Our project will be testable for testibility” is NOT acceptable. Tell us how, why, and what.

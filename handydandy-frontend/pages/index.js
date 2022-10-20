@@ -19,7 +19,6 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <p></p>
-
     </div>
   )
 }

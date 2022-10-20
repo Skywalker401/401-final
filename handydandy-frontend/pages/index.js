@@ -1,24 +1,42 @@
 import styles from '../styles/Home.module.css'
-import axios from 'axios'
+import Axios from 'axios'
+import React, {useState, useEffect} from 'react';
 
 export default function Home() {
-  let new_res;
-  const fetcher = async (url) => {
-    try {
-      const res = await axios.get(url)
-      // console.log(res)
-      return res;
-    } catch (err) {
-      console.log("error")
+
+  const [user, setUser] = useState()
+
+  useEffect(()=> {
+    const getUsers = async () => {
+      try {
+        const response = await Axios.get('http://127.0.0.1:8000/api/v1/handydandy');
+        setUser(response.data[0]);
+        console.log(response.data[0]); 
+      }
+      catch(error) {
+        if (error.response) {
+          console.log(error.response)
+        }
+      }
     }
-  };
+    getUsers();
+  }, []);
 
-  const resp = fetcher('http://127.0.0.1:8000/api/v1/handydandy').then(resp => console.log(resp))
 
+// this should be checking response, so if
+  function renderPage(){
+    if(user == undefined){
+      // use this part if user auth is not working then return an login error
+      return;
+    }
+    else{
+      return <p>Hello {user.name}</p>
+    }
+  }
 
   return (
     <div className={styles.container}>
-      <p></p>
+      {renderPage()}
     </div>
   )
 }

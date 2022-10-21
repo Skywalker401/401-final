@@ -1,24 +1,49 @@
-import styles from '../styles/Home.module.css'
-import axios from 'axios'
+import styles from '../styles/Home.module.css';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useUser, getSession } from '@auth0/nextjs-auth0';
+
 
 export default function Home() {
-  let new_res;
-  const fetcher = async (url) => {
-    try {
-      const res = await axios.get(url)
-      // console.log(res)
-      return res;
-    } catch (err) {
-      console.log("error")
-    }
-  };
+  const { user, error, isLoading } = useUser();
+  const [data, setData] = useState({})
 
-  const resp = fetcher('http://127.0.0.1:8000/api/v1/handydandy').then(resp => console.log(resp))
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/v1/handydandy/api/public', {
+
+        });
+        setData(response.data);
+      }
+      catch (error) {
+        if (error.response) {
+          console.log(error.response)
+        }
+      }
+    }
+    fetchData()
+  }, [])
+  console.log(user)
 
 
   return (
-    <div className={styles.container}>
-      <p></p>
-    </div>
+    <>
+      {user ?
+        <>
+          <a href="/api/auth/logout">Logout</a>
+          <p>{user.name}</p>
+        </>
+        : <a href="/api/auth/login">Login</a>
+      }
+
+
+      {data ?
+        (<div className={styles.container}>
+          <p>{data.message}</p>
+        </div>)
+        : <p>No data</p>
+      }
+    </>
   )
 }

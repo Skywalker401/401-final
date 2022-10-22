@@ -1,6 +1,4 @@
 import styles from '../styles/Home.module.css';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import useApi from '../hooks/useApi';
 

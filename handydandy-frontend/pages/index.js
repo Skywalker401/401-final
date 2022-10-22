@@ -1,7 +1,9 @@
-import styles from '../styles/Home.module.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useUser, getSession } from '@auth0/nextjs-auth0';
+import styles from '../styles/Home.module.css'
+import NavBar from "../components/NavBar";
+
 
 
 export default function Home() {
@@ -46,6 +48,8 @@ export default function Home() {
         </div>)
         : <p>No data</p>
       }
+      <NavBar/>
     </>
+
   )
 }

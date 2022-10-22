@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import NavBar from "../components/NavBar";
 import Dashboard from "../components/Dashboard";
+import AboutUs from "../components/AboutUs";
 
 
 export default function Home() {
@@ -21,8 +22,8 @@ export default function Home() {
 
   return (
 <>
-        {/*<NavBar/>*/}
         <Dashboard/>
+
   </>
   )
 }

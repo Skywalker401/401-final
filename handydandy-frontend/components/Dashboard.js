@@ -1,26 +1,4 @@
-/*
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  const colors = require('tailwindcss/colors')
-
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        colors: {
-          rose: colors.rose,
-        },
-      },
-    },
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+import Link from 'next/link'
 import { Fragment } from 'react'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import {
@@ -58,7 +36,7 @@ const navigation = [
   { name: 'Home', href: '#', icon: HomeIcon, current: true },
 
   { name: 'Project Ideas', href: '#', icon: LightBulbIcon, current: false },
-  { name: 'About Us', href: '#', icon: UserGroupIcon, current: false },
+  { name: 'About Us', href:'handydandy-frontend/pages/about.js', icon: UserGroupIcon, current: false },
   { name: 'Contact Us', href: '#', icon: EnvelopeOpenIcon, current: false },
 ]
 const userNavigation = [
@@ -72,14 +50,11 @@ const tabs = [
   { name: 'Home Upgrades', href: '#', current: false },
   { name: 'Completed', href: '#', current: false },
 ]
-const questions = [
+const tasks = [
   {
     id: '81614',
-    likes: '29',
-    replies: '11',
-    views: '2.7k',
     author: {
-      name: 'Dries Vincent',
+      name: 'Kitchen',
       imageUrl:
         'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
       href: '#',
@@ -87,10 +62,9 @@ const questions = [
     date: 'December 9 at 11:43 AM',
     datetime: '2020-12-09T11:43:00',
     href: '#',
-    title: 'What would you have done differently if you ran Jurassic Park?',
-    body: `
-      <p>Jurassic Park was an incredible idea and a magnificent feat of engineering, but poor protocols and a disregard for human safety killed what could have otherwise been one of the best businesses of our generation.</p>
-      <p>Ultimately, I think that if you wanted to run the park successfully and keep visitors safe, the most important thing to prioritize would be&hellip;</p>
+    title: 'Replace Water Filter',
+    Notes: `
+      <p>Time to replace your filter. Remember to get a #45897 filter!</p>
     `,
   },
   // More questions...
@@ -103,17 +77,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Dashboard() {
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div className="min-h-full">
         {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
         <Popover
@@ -147,7 +113,7 @@ export default function Example() {
                   </div>
                   <div className="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
                     {/* Mobile menu button */}
-                    <Popover.Button className="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500">
+                    <Popover.Button className="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-darkBlue">
                       <span className="sr-only">Open menu</span>
                       {open ? (
                         <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -160,7 +126,7 @@ export default function Example() {
 
                     <a
                       href="#"
-                      className="ml-5 flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
+                      className="ml-5 flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2"
                     >
                       <span className="sr-only">View notifications</span>
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -169,7 +135,7 @@ export default function Example() {
                     {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-5 flex-shrink-0">
                       <div>
-                        <Menu.Button className="flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">
+                        <Menu.Button className="flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2">
                           <span className="sr-only">Open user menu</span>
                           <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
                         </Menu.Button>
@@ -211,17 +177,17 @@ export default function Example() {
               <Popover.Panel as="nav" className="lg:hidden" aria-label="Global">
                 <div className="mx-auto max-w-3xl space-y-1 px-2 pt-2 pb-3 sm:px-4">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
                       aria-current={item.current ? 'page' : undefined}
                       className={classNames(
-                        item.current ? 'bg-gray-100 text-gray-900' : 'hover:bg-gray-50',
+                        item.current ? 'bg-lightGray text-gray-900' : 'hover:bg-white',
                         'block rounded-md py-2 px-3 text-base font-medium'
                       )}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="border-t border-gray-200 pt-4">
@@ -235,7 +201,7 @@ export default function Example() {
                     </div>
                     <button
                       type="button"
-                      className="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
+                      className="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2"
                     >
                       <span className="sr-only">View notifications</span>
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -246,7 +212,7 @@ export default function Example() {
                       <a
                         key={item.name}
                         href={item.href}
-                        className="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                        className="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-white hover:text-gray-900"
                       >
                         {item.name}
                       </a>
@@ -257,7 +223,7 @@ export default function Example() {
                 <div className="mx-auto mt-6 max-w-3xl px-4 sm:px-6">
                   <a
                     href="#"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-rose-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-rose-700"
+                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-lightGray"
                   >
                     New Post
                   </a>
@@ -281,7 +247,7 @@ export default function Example() {
                       key={item.name}
                       href={item.href}
                       className={classNames(
-                        item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:bg-gray-50',
+                        item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:bg-lightGray',
                         'group flex items-center px-3 py-2 text-sm font-medium rounded-md'
                       )}
                       aria-current={item.current ? 'page' : undefined}
@@ -308,7 +274,7 @@ export default function Example() {
                   </label>
                   <select
                     id="question-tabs"
-                    className="block w-full rounded-md border-gray-300  text-base font-medium text-gray-900 shadow-sm focus:border-rose-500 focus:ring-rose-500"
+                    className="block w-full rounded-md border-gray-300  text-base font-medium text-gray-900 shadow-sm focus:border-darkBlue focus:ring-darkBlue"
                     defaultValue={tabs.find((tab) => tab.current).name}
                   >
                     {tabs.map((tab) => (
@@ -327,14 +293,14 @@ export default function Example() {
                           tab.current ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700',
                           tabIdx === 0 ? 'rounded-l-lg' : '',
                           tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '',
-                          'group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10'
+                          'group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-lightGray focus:z-10'
                         )}
                       >
                         <span>{tab.name}</span>
                         <span
                           aria-hidden="true"
                           className={classNames(
-                            tab.current ? 'bg-rose-500' : 'bg-transparent',
+                            tab.current ? 'bg-lightGray' : 'bg-transparent',
                             'absolute inset-x-0 bottom-0 h-0.5'
                           )}
                         />
@@ -344,25 +310,25 @@ export default function Example() {
                 </div>
               </div>
               <div className="mt-4">
-                <h1 className="sr-only">Recent questions</h1>
+                <h1 className="sr-only">Upcoming Maintenance</h1>
                 <ul role="list" className="space-y-4">
-                  {questions.map((question) => (
-                    <li key={question.id} className="bg-white px-4 py-6 shadow sm:rounded-lg sm:p-6">
-                      <article aria-labelledby={'question-title-' + question.id}>
+                  {tasks.map((tasks) => (
+                    <li key={tasks.id} className="bg-white px-4 py-6 shadow sm:rounded-lg sm:p-6">
+                      <article aria-labelledby={'question-title-' + tasks.id}>
                         <div>
                           <div className="flex space-x-3">
                             <div className="flex-shrink-0">
-                              <img className="h-10 w-10 rounded-full" src={question.author.imageUrl} alt="" />
+                              <img className="h-10 w-10 rounded-full" src={tasks.author.imageUrl} alt="" />
                             </div>
                             <div className="min-w-0 flex-1">
                               <p className="text-sm font-medium text-gray-900">
-                                <a href={question.author.href} className="hover:underline">
-                                  {question.author.name}
+                                <a href={tasks.author.href} className="hover:underline">
+                                  {tasks.author.name}
                                 </a>
                               </p>
                               <p className="text-sm text-gray-500">
-                                <a href={question.href} className="hover:underline">
-                                  <time dateTime={question.datetime}>{question.date}</time>
+                                <a href={tasks.href} className="hover:underline">
+                                  <time dateTime={tasks.datetime}>{tasks.date}</time>
                                 </a>
                               </p>
                             </div>
@@ -391,7 +357,7 @@ export default function Example() {
                                           <a
                                             href="#"
                                             className={classNames(
-                                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                              active ? 'bg-red-100 text-gray-900' : 'text-gray-700',
                                               'flex px-4 py-2 text-sm'
                                             )}
                                           >
@@ -437,37 +403,24 @@ export default function Example() {
                               </Menu>
                             </div>
                           </div>
-                          <h2 id={'question-title-' + question.id} className="mt-4 text-base font-medium text-gray-900">
-                            {question.title}
+                          <h2 id={'question-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
+                            {tasks.title}
                           </h2>
                         </div>
                         <div
                           className="mt-2 space-y-4 text-sm text-gray-700"
-                          dangerouslySetInnerHTML={{ __html: question.body }}
+                          dangerouslySetInnerHTML={{ __html: tasks.Notes }}
                         />
                         <div className="mt-6 flex justify-between space-x-8">
                           <div className="flex space-x-6">
                             <span className="inline-flex items-center text-sm">
                               <button type="button" className="inline-flex space-x-2 text-gray-400 hover:text-gray-500">
                                 <HandThumbUpIcon className="h-5 w-5" aria-hidden="true" />
-                                <span className="font-medium text-gray-900">{question.likes}</span>
+                                <span className="font-medium text-gray-900">{tasks.likes}</span>
                                 <span className="sr-only">likes</span>
                               </button>
                             </span>
-                            <span className="inline-flex items-center text-sm">
-                              <button type="button" className="inline-flex space-x-2 text-gray-400 hover:text-gray-500">
-                                <ChatBubbleLeftEllipsisIcon className="h-5 w-5" aria-hidden="true" />
-                                <span className="font-medium text-gray-900">{question.replies}</span>
-                                <span className="sr-only">replies</span>
-                              </button>
-                            </span>
-                            <span className="inline-flex items-center text-sm">
-                              <button type="button" className="inline-flex space-x-2 text-gray-400 hover:text-gray-500">
-                                <EyeIcon className="h-5 w-5" aria-hidden="true" />
-                                <span className="font-medium text-gray-900">{question.views}</span>
-                                <span className="sr-only">views</span>
-                              </button>
-                            </span>
+
                           </div>
                           <div className="flex text-sm">
                             <span className="inline-flex items-center text-sm">

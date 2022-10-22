@@ -3,9 +3,11 @@ import axios from 'axios'
 import NavBar from "../components/NavBar";
 import Dashboard from "../components/Dashboard";
 import AboutUs from "../components/AboutUs";
+// import {useUser} from "@auth0/nextjs-auth0";
 
 
 export default function Home() {
+  // const {user} = useUser()
   let new_res;
   const fetcher = async (url) => {
     try {
@@ -22,7 +24,9 @@ export default function Home() {
 
   return (
 <>
-        <Dashboard/>
+    <NavBar/>
+ <Dashboard/>
+
 
   </>
   )

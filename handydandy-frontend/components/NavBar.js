@@ -1,9 +1,10 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import image from './handydandy.png'
+import Image from 'next/image'
 
 const navigation = [
+
   { name: 'Dashboard', href: '#', current: true },
   { name: 'Project Ideas', href: '#', current: false },
   { name: 'Meet the Team', href: '#', current: false },
@@ -32,15 +33,8 @@ export default function NavBar() {
                   )}
                 </Disclosure.Button>
               </div>
+                                <img className="hidden h-14 w-auto lg:block"   src="/hd.svg"  alt="Handy Dandy Logo"/>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  {/*<img*/}
-                  {/*  className="block h-8 w-auto lg:hidden"*/}
-                  {/*  src="./handydandy.png"*/}
-                  {/*  alt="Your Company"*/}
-                  {/*/>*/}
-                  <img src={image}  alt="Handy Dandy Logo"/>
-                </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (

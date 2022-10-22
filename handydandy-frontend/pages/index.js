@@ -1,26 +1,30 @@
+import { useUser } from '@auth0/nextjs-auth0';
 import styles from '../styles/Home.module.css'
-import axios from 'axios'
-import LandingPage from "../components/LandingPage";
+import NavBar from "../components/NavBar";
+import useApi from '../hooks/useApi';
+
 
 export default function Home() {
-  let new_res;
-  const fetcher = async (url) => {
-    try {
-      const res = await axios.get(url)
-      // console.log(res)
-      return res;
-    } catch (err) {
-      console.log("error")
-    }
-  };
-
-  const resp = fetcher('http://127.0.0.1:8000/api/v1/handydandy').then(resp => console.log(resp))
-
+  const { user } = useUser();
+  const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net//api/v1/handydandy/private')
 
   return (
-    <div className={styles.container}>
-      <p></p>
-      <LandingPage/>
-    </div>
+    <>
+      {user ?
+        <>
+          <a href="/api/auth/logout">Logout</a>
+          <p>{user.name}</p>
+        </>
+        : <a href="/api/auth/login">Login</a>
+      }
+      {data ?
+        (<div className={styles.container}>
+          <p>{data.message}</p>
+        </div>)
+        : <p>No data</p>
+      }
+      <NavBar/>
+    </>
+
   )
 }

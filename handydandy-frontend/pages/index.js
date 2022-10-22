@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import NavBar from "../components/NavBar";
+import Dashboard from "../components/Dashboard";
 
 
 export default function Home() {
@@ -19,8 +20,9 @@ export default function Home() {
 
 
   return (
-
-        <NavBar/>
-
+<>
+        {/*<NavBar/>*/}
+        <Dashboard/>
+  </>
   )
 }

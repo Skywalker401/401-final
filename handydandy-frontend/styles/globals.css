@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: lightgray;
+}
+
 
 /* Color Theme Swatches in Hex */
 /* darkblue #010D26;*/

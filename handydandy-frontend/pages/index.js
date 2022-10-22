@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
-import LandingPage from "../components/LandingPage";
+import NavBar from "../components/NavBar";
+
 
 export default function Home() {
   let new_res;
@@ -18,9 +19,8 @@ export default function Home() {
 
 
   return (
-    <div className={styles.container}>
-      <p></p>
-      <LandingPage/>
-    </div>
+
+        <NavBar/>
+
   )
 }

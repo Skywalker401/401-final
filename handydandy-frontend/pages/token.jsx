@@ -1,39 +1,32 @@
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { getAccessToken, withPageAuthRequired, useSWR, useAuth0 } from '@auth0/nextjs-auth0';
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useUser, getSession } from '@auth0/nextjs-auth0';
 
-function Token() {
-  const [state, setState] = useState({ isLoading: false, response: undefined, error: undefined });
 
-  const callApi = async () => {
-    setState(previous => ({ ...previous, isLoading: true }))
+export default function Token() {
+  const [state, setState] = useState({ response: undefined });
+  const { user } = useUser();
+  console.log(user)
 
-    try {
-      const response = await fetch('https://dev-4vam03w3.us.auth0.com/api/v2/');
-      const data = await response.json();
+  async function get_token() {
 
-      setState(previous => ({ ...previous, response: data, error: undefined }))
-    } catch (error) {
-      setState(previous => ({ ...previous, response: undefined, error }))
-    } finally {
-      setState(previous => ({ ...previous, isLoading: false }))
-    }
-  };
-
-  const handle = (event, fn) => {
-    event.preventDefault();
-    fn();
-  };
+    const response = await axios.post('/api/get_token')
+    setState({ response: response })
+    console.log(state.data)
+    console.log(user)
+  }
 
   return (
     <>
-      <p>Token</p>
-      <button onClick={e => handle(e, callApi)}> Get Token
+      {user && <h1>{user.name}</h1>}
+
+      <button onClick={() => get_token()}>
+        Get Token
       </button>
-      <p>{state.data}</p>
+      {state.response &&
+        <p>{state.response.data}</p>
+      }
     </>
   );
 }
-
-export default withPageAuthRequired(Token, {
-
-});

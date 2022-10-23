@@ -15,6 +15,11 @@ import {
     LightBulbIcon,
     WrenchScrewdriverIcon,
     EnvelopeOpenIcon,
+    ArrowPathIcon,
+    TrashIcon,
+    CheckCircleIcon,
+
+
 } from '@heroicons/react/20/solid'
 import {
   ArrowTrendingUpIcon,
@@ -24,7 +29,9 @@ import {
   HomeIcon,
   UserGroupIcon,
   XMarkIcon,
+
 } from '@heroicons/react/24/outline'
+import useApi from '../hooks/useApi';
 
 
 const navigation = [
@@ -41,7 +48,16 @@ const tabs = [
   { name: 'Home Upgrades', href: '#', current: false },
   { name: 'Completed', href: '#', current: false },
 ]
-const tasks = [
+
+
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
+export default function Dashboard() {
+ const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net//api/v1/handydandy/private')
+ const tasks = [
   {
     id: '81614',
     author: {
@@ -55,20 +71,13 @@ const tasks = [
     href: '#',
     title: 'Replace Water Filter',
     Notes: `
-      <p>Time to replace your filter. Remember to get a #45897 filter!</p>
+      <p> ${data.message} </p>
     `,
   },
   // More questions...
 
 
 ]
-
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-export default function Dashboard() {
   return (
     <>
       <div className="min-h-full">
@@ -156,7 +165,8 @@ export default function Dashboard() {
                         <div>
                           <div className="flex space-x-3">
                             <div className="flex-shrink-0">
-                              <img className="h-10 w-10 rounded-full" src={tasks.author.imageUrl} alt="" />
+                              {/*<img className="h-10 w-10 rounded-full" src={tasks.author.imageUrl} alt="" />*/}
+                              <WrenchScrewdriverIcon className="h-5 w-5" aria-hidden="true"/>
                             </div>
                             <div className="min-w-0 flex-1">
                               <p className="text-sm font-medium text-gray-900">
@@ -199,8 +209,8 @@ export default function Dashboard() {
                                               'flex px-4 py-2 text-sm'
                                             )}
                                           >
-                                            <StarIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
-                                            <span>Add to favorites</span>
+                                            <ArrowPathIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                                            <span>Update Task</span>
                                           </a>
                                         )}
                                       </Menu.Item>
@@ -213,11 +223,11 @@ export default function Dashboard() {
                                               'flex px-4 py-2 text-sm'
                                             )}
                                           >
-                                            <CodeBracketIcon
+                                            <CheckCircleIcon
                                               className="mr-3 h-5 w-5 text-gray-400"
                                               aria-hidden="true"
                                             />
-                                            <span>Embed</span>
+                                            <span>Mark Complete</span>
                                           </a>
                                         )}
                                       </Menu.Item>
@@ -230,8 +240,8 @@ export default function Dashboard() {
                                               'flex px-4 py-2 text-sm'
                                             )}
                                           >
-                                            <FlagIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
-                                            <span>Report content</span>
+                                            <TrashIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" />
+                                            <span>Remove Task</span>
                                           </a>
                                         )}
                                       </Menu.Item>
@@ -245,30 +255,10 @@ export default function Dashboard() {
                             {tasks.title}
                           </h2>
                         </div>
-                        <div
+                        { data ? <div
                           className="mt-2 space-y-4 text-sm text-gray-700"
                           dangerouslySetInnerHTML={{ __html: tasks.Notes }}
-                        />
-                        <div className="mt-6 flex justify-between space-x-8">
-                          <div className="flex space-x-6">
-                            <span className="inline-flex items-center text-sm">
-                              <button type="button" className="inline-flex space-x-2 text-gray-400 hover:text-gray-500">
-                                <HandThumbUpIcon className="h-5 w-5" aria-hidden="true" />
-                                <span className="font-medium text-gray-900">{tasks.likes}</span>
-                                <span className="sr-only">likes</span>
-                              </button>
-                            </span>
-
-                          </div>
-                          <div className="flex text-sm">
-                            <span className="inline-flex items-center text-sm">
-                              <button type="button" className="inline-flex space-x-2 text-gray-400 hover:text-gray-500">
-                                <ShareIcon className="h-5 w-5" aria-hidden="true" />
-                                <span className="font-medium text-gray-900">Share</span>
-                              </button>
-                            </span>
-                          </div>
-                        </div>
+                        /> : <p>No Data Available</p>}
                       </article>
                     </li>
                   ))}

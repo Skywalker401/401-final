@@ -3,6 +3,7 @@ import {Disclosure, Menu, Popover, Transition} from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from "next/link";
+import {useUser} from "@auth0/nextjs-auth0";
 
 const navigation = [
 
@@ -16,20 +17,16 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const user = {
-  name: 'Chelsea Hagon',
-  email: 'chelsea.hagon@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+
 
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Sign out', href: "/api/auth/logout" },
 ]
 
 export default function NavBar() {
+  const {user} = useUser()
   return (
     <Disclosure as="nav" className="bg-lightGray">
       {({ open }) => (
@@ -85,11 +82,11 @@ export default function NavBar() {
                     </a>
 
                     {/* Profile dropdown */}
-                    <Menu as="div" className="relative ml-5 flex-shrink-0">
+                    {user ? <Menu as="div" className="relative ml-5 flex-shrink-0">
                       <div>
                         <Menu.Button className="flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2">
                           <span className="sr-only">Open user menu</span>
-                          <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                          { user ? <img className="h-8 w-8 rounded-full" src={user.picture} alt="" /> : <p>Please Login</p>}
                         </Menu.Button>
                       </div>
                       <Transition
@@ -119,7 +116,7 @@ export default function NavBar() {
                           ))}
                         </Menu.Items>
                       </Transition>
-                    </Menu>
+                    </Menu>  : <a href="/api/auth/login">Login</a>}
 
 
                   </div>
@@ -145,11 +142,11 @@ export default function NavBar() {
                 <div className="border-t border-gray-200 pt-4">
                   <div className="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
                     <div className="flex-shrink-0">
-                      <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+                      { user ? <img className="h-10 w-10 rounded-full" src={user.picture} alt="" /> : <p>Please Login</p>}
                     </div>
                     <div className="ml-3">
-                      <div className="text-base font-medium text-gray-800">{user.name}</div>
-                      <div className="text-sm font-medium text-gray-500">{user.email}</div>
+                      { user ? <div className="text-base font-medium text-gray-800">{user.name}</div> : <p>Please Login</p>}
+                      {user ? <div className="text-sm font-medium text-gray-500">{user.email}</div> : <p>Please Login</p>}
                     </div>
                     <button
                       type="button"

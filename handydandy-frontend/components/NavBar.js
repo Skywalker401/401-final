@@ -1,18 +1,18 @@
 import { Fragment } from 'react'
 import {Disclosure, Menu, Popover, Transition} from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import {Bars3Icon, BellIcon, XMarkIcon, UserGroupIcon, HomeIcon} from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from "next/link";
 import {useUser} from "@auth0/nextjs-auth0";
+import {EnvelopeOpenIcon, LightBulbIcon} from "@heroicons/react/20/solid";
 
 const navigation = [
+  { name: 'Home', href: '#', icon: HomeIcon, current: true },
 
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Project Ideas', href: '#', current: false },
-  { name: 'Meet the Team', href: '#', current: false },
-  { name: 'Contact Us', href: '#', current: false },
+  { name: 'Project Ideas', href: '#', icon: LightBulbIcon, current: false },
+  { name: 'About Us', href:'/about', icon: UserGroupIcon, current: false },
+  { name: 'Contact Us', href: '#', icon: EnvelopeOpenIcon, current: false },
 ]
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -74,11 +74,13 @@ export default function NavBar() {
                   <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
 
                     <a
-                      href="#"
+                      href="/about"
                       className="ml-5 flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2"
                     >
                       <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
+
+                      <UserGroupIcon className="h-6 w-6" aria-hidden="true" title="About Us" />
+
                     </a>
 
                     {/* Profile dropdown */}
@@ -153,7 +155,7 @@ export default function NavBar() {
                       className="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2"
                     >
                       <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      <UserGroupIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
                   </div>
                   <div className="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">

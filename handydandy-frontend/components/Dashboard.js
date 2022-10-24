@@ -130,7 +130,7 @@ export default function Dashboard() {
         <div className="mt-4">
           <h1 className="sr-only">Upcoming Maintenance</h1>
           <ul role="list" className="space-y-4">
-            <button onClick={() => referToWikihow('clean gutters')}>WIKIHOW</button>
+
             {tasks.map((tasks) => (
               <li key={tasks.id} className="px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6">
                 <article aria-labelledby={'question-title-' + tasks.id}>
@@ -226,6 +226,7 @@ export default function Dashboard() {
                     <h2 id={'question-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
                       {tasks.title}
                     </h2>
+                    <button onClick={() => referToWikihow(tasks.title)}>DIY</button>
                   </div>
                   {data ? <div
                     className="mt-2 space-y-4 text-sm text-gray-700"

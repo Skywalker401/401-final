@@ -30,8 +30,6 @@ function classNames(...classes) {
 
 export default function Registered(props) {
   const { user } = useUser()
-  console.log(user, 'Dashboard: Auth0');
-  console.log(props, 'Dashboard: backend DB ');
   const tasks = [
     {
       id: '81614',

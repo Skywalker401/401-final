@@ -45,7 +45,7 @@ const team = [
     name: 'Marni',
     href: '#',
 
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
     imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
     about: 'My name is Marni and I am a Software Developer',
   },
@@ -66,6 +66,7 @@ export default function AboutUs() {
 <>
   <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 ">
 
+    {team.map((team) =>(
 
             <div className="flex flex-wrap -mx-1 lg:-mx-4">
 

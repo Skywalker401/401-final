@@ -4,6 +4,8 @@ import Dashboard from "../components/Dashboard";
 import AboutUs from "../components/AboutUs";
 import {useUser} from "@auth0/nextjs-auth0";
 import SideNav from "../components/SideNav";
+import LandingPage from "../components/LandingPage";
+import Footer from "../components/Footer";
 
 
 export default function Home() {
@@ -20,11 +22,13 @@ export default function Home() {
                             className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
                             <SideNav/>
                             <Dashboard/>
+
                         </div>
+                        <Footer/>
                     </div>
                 </div>
             </>
-                : <NavBar/>
+                : <><NavBar/> <LandingPage/><Footer/></>
             }
 
 

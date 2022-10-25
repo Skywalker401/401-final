@@ -17,13 +17,15 @@ export default function About() {
                         <div
                             className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
                             <SideNav/>
-                            <AboutUs/>
-                        </div>
+<div className="col-span-9">
+                            <AboutUs/></div>
+
+</div>
                     </div>
                 </div>
                 :
                 <AboutUs/>
-            }
+                }
 
 
 

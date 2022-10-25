@@ -5,9 +5,6 @@ export default withApiAuthRequired(async function shows(req, res) {
   try {
     const { accessToken } = await getAccessToken(req, res);
     console.log("!!!!", accessToken)
-
-
-
     res.status(200).send(accessToken);
 
   } catch (error) {

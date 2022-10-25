@@ -9,19 +9,15 @@ export default function Dashboard() {
     // console.log(isLoading);
     // console.log(data);
     // console.log(user);
-
-    function timer2(){
-        return <Register user={user}/>
-    }
-    
-    function timer(){
+  
+    function checkRegister(){
         if(isLoading === true){
             return <p>Loading</p>
         }
         else if(isLoading === false){
             if(data === undefined){
-                setTimeout(timer2, 5000);
-            }
+                return <Register user={user} />
+            }  
             else{
                 return <Registered user={data}/>
             }
@@ -32,7 +28,7 @@ export default function Dashboard() {
 
     
     return (
-            timer()
+            checkRegister()
     );
   }
 

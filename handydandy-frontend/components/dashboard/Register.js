@@ -4,9 +4,9 @@ import { useState } from "react";
 export default function Register(props) {
 
     const [userName, setUserName] = useState('')
-
+    console.log(props);
     const updatedUser = {
-      sid:props.user.sub.split("|")[1],
+      // sid:props.user.sub.split("|")[1],
       userName:userName,
     }
 

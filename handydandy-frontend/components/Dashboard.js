@@ -54,6 +54,7 @@ function classNames(...classes) {
 export default function Dashboard() {
   const { data, isLoading } = useApi('http://127.0.0.1:8000/api/get-user')
   const { user } = useUser()
+  console.log(user)
   const tasks = [
     {
       id: '81614',

@@ -65,28 +65,19 @@ export default function AboutUs() {
   return (
 <>
   <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 ">
-
-
-            <div className="flex flex-wrap -mx-1 lg:-mx-4">
-
-      <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-full ">
-
-
-        <article className="overflow-hidden rounded-lg shadow-lg">
-
+      <div className="flex flex-wrap -mx-1 lg:-mx-4">
+        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-full ">
+          <article className="overflow-hidden rounded-lg shadow-lg">
           <a href={team.href}>
             <img alt={team.imageAlt} className="block h-auto w-full" src={team.imageSrc}/>
           </a>
-
           <header className="flex items-center justify-between leading-tight p-2 md:p-4">
             <h1 className="text-lg">
               <a className="no-underline hover:underline text-black" href="#">
                 {team.name}
               </a>
             </h1>
-
           </header>
-
           <footer className="flex items-center justify-between leading-none p-2 md:p-4">
             <a className="flex items-center no-underline hover:underline text-black" href="#">
               <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"/>
@@ -99,19 +90,10 @@ export default function AboutUs() {
               <i className="fa fa-heart"></i>
             </a>
           </footer>
-
-        </article>
-
-
+          </article>
       </div>
-
-
-
     </div>
-
-    ))}
-
-</div>
-</>
+  </div>
+  </>
   )
 }

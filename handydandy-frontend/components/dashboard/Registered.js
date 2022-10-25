@@ -2,38 +2,15 @@ import Link from 'next/link'
 import { Fragment } from 'react'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import { useUser } from "@auth0/nextjs-auth0";
-import referToWikihow from '../utils/referToWikihow';
+import referToWikihow from '../../utils/referToWikihow';
 import {
-  ChatBubbleLeftEllipsisIcon,
-  CodeBracketIcon,
   EllipsisVerticalIcon,
-  EyeIcon,
-  FlagIcon,
-  HandThumbUpIcon,
-  MagnifyingGlassIcon,
-  PlusIcon,
-  ShareIcon,
-  StarIcon,
-  LightBulbIcon,
   WrenchScrewdriverIcon,
-  EnvelopeOpenIcon,
-  ArrowPathIcon,
-  TrashIcon,
   CheckCircleIcon,
-
-
 } from '@heroicons/react/20/solid'
 import {
-  ArrowTrendingUpIcon,
-  Bars3Icon,
-  BellIcon,
-  FireIcon,
-  HomeIcon,
-  UserGroupIcon,
-  XMarkIcon,
-
 } from '@heroicons/react/24/outline'
-import useApi from '../hooks/useApi';
+
 
 
 
@@ -51,10 +28,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Dashboard() {
-  const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
+export default function Registered(props) {
   const { user } = useUser()
-  console.log(user)
+  console.log(user, 'Dashboard: Auth0');
+  console.log(props, 'Dashboard: backend DB ');
   const tasks = [
     {
       id: '81614',
@@ -68,23 +45,15 @@ export default function Dashboard() {
       datetime: '2020-12-09T11:43:00',
       href: '#',
       title: 'Replace Water Filter',
-      Notes: `
-      <p> ${JSON.stringify(data)} </p>
-    `,
+      Notes: JSON.stringify(props.user.name),
     },
     // More questions...
-
-
   ]
+
+  // create a function to render either tasks or a register page
+  
   return (
     <>
-      {/*<div className="min-h-full">*/}
-      {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
-
-
-      {/*<div className="py-10">*/}
-      {/*  <div className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">*/}
-
       <main className="lg:col-span-9 xl:col-span-6">
         <div className="px-4 sm:px-0">
           <div className="sm:hidden">
@@ -229,7 +198,7 @@ export default function Dashboard() {
                     </h2>
                     <button onClick={() => referToWikihow(tasks.title)}>DIY</button>
                   </div>
-                  {data ? <div
+                  {props ? <div
                     className="mt-2 space-y-4 text-sm text-gray-700"
                     dangerouslySetInnerHTML={{ __html: tasks.Notes }}
                   /> : <p>No Data Available</p>}
@@ -245,9 +214,6 @@ export default function Dashboard() {
 
         </div>
       </aside>
-      {/*  </div>*/}
-      {/*</div>*/}
-      {/*</div>*/}
     </>
   )
 }

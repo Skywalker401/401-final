@@ -11,18 +11,25 @@ export default function Register(props) {
       address:"",
       city:"",
       zip:"",
-    //   competancies:{}
     })
 
     const [isChecked, setIsChecked] = useState(false);
+    const [comps, setComps] = useState({
+        hvac:isChecked,
+        electrical:isChecked,
+        carpentry:isChecked,
+        plumbing:isChecked,
+    });
 
     const handleChange = (event) => {
       setUser({ ...user, [event.target.name]: event.target.value });
+      setComps({ ...comps, [event.target.name]: event.target.value });
 
     };
 
     const checkHandler = () => {
         setIsChecked(!isChecked)
+        setComps(!isChecked)
       }
 
     // post request to create a new user
@@ -30,22 +37,23 @@ export default function Register(props) {
       event.preventDefault();
       console.log(user, 'form user');
       console.log(isChecked, 'checkedbox');
+      console.log(comps, 'comps');
 
-      axios({
-        method: 'post',
-        url: 'https://handy-dandy.azurewebsites.net/api/create-user',
-        data: {
-          sid:user.sid,
-          name: user.name,
-          email: user.email,
-          address:user.address,
-          city:user.city,
-          zip:user.zip,
-          is_pro:isChecked,
-          competancies:user.competancies
-        },
-        headers: { Authorization: `Bearer ${props.token}` }
-      }).then(console.log).catch(console.log);
+    //   axios({
+    //     method: 'post',
+    //     url: 'https://handy-dandy.azurewebsites.net/api/create-user',
+    //     data: {
+    //       sid:user.sid,
+    //       name: user.name,
+    //       email: user.email,
+    //       address:user.address,
+    //       city:user.city,
+    //       zip:user.zip,
+    //       is_pro:isChecked,
+    //       competancies:comps
+    //     },
+    //     headers: { Authorization: `Bearer ${props.token}` }
+    //   }).then(console.log).catch(console.log);
     };
 
     // compentancies function 
@@ -67,7 +75,7 @@ export default function Register(props) {
         <div className="flex">
             <input className="lg" type="checkbox" name="pro" defaultChecked={false} checked={isChecked} onChange={checkHandler} />
             {
-                isChecked ? <Comps /> : null    
+                isChecked ? <Comps handleChange={handleChange} /> : null    
             }    
         </div>
             

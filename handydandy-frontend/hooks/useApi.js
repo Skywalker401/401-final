@@ -19,7 +19,7 @@ const useApi = (url) => {
         console.log(res.data);
       })
       .catch((err) => {
-        console.log(err, 'error from use api');
+        console.log(err);
       })
       .finally(() => {
         setIsLoading(false);

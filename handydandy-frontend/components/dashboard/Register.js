@@ -1,11 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-import { useToken } from "../../hooks/useToken";
 
 
 
 export default function Register(props) {
-
+    console.log(props);
     const [user, setUser] = useState({
       sid:props.user.sub.split("|")[1],
       name:"",
@@ -22,6 +21,7 @@ export default function Register(props) {
     // post request to create a new user
     const handleSubmit = (event) => {
       // event.preventDefault();
+      console.log(user, 'form user');
 
       axios({
         method: 'post',

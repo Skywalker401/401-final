@@ -9,26 +9,30 @@ export default function Dashboard() {
     const { token } = useToken()
     const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')  
   
-    function checkRegister(){
-        if(isLoading === true){
-            return <p>Loading</p>
-        }
-        else if(isLoading === false){
-            if(data === undefined){
-                return <Register user={user} token={token} />
-            }  
-            else{
-                return <Registered user={data}/>
-            }
+    // function checkRegister()
+    
+    // {
+    //     if(isLoading === true){
+    //         return <p>Loading</p>
+    //     }
+    //     else if(isLoading === false){
+    //         if(data === undefined){
+    //             return <Register user={user} token={token} />
+    //         }  
+    //         else{
+    //             return <Registered user={data}/>
+    //         }
             
-        }
+    //     }
         
-    }
+    // }
 
     
     return (
-            checkRegister()
+        <>
+            { isLoading ? <p>Loading</p> : data !== undefined ? <Registered user={data} /> : <Register user={user} token={token} /> }
+        </>
     );
   }
 
-  // {data === undefined ? <Registered user={data} /> : <Register user={user}/> }
+  

@@ -134,9 +134,9 @@ export default function LandingPage() {
                     </span>
                   </div>
                   <div className="mt-6">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900">Hire a "Pro" for your home maintenance/renovations</h2>
+                    <h2 className="text-3xl font-bold tracking-tight text-gray-900">Hire a Pro for your home maintenance/renovations</h2>
                     <p className="mt-4 text-lg text-gray-500">
-                      With HandyDandy, you can choose from a curated list of pros near you. They may be licensed professionals, or experienced DIYers. Best of all, they're YOUR neighbors!
+                      With HandyDandy, you can choose from a curated list of pros near you. They may be licensed professionals, or experienced DIYers. Best of all, they are YOUR neighbors!
                     </p>
                     <div className="mt-6">
                       <a
@@ -197,7 +197,7 @@ export default function LandingPage() {
                       Tackle any project with our carefully curated list of DIY instructions
                     </h2>
                     <p className="mt-4 text-lg text-gray-500">
-                     With HandyDandy, you're given the option to DIY. Browse our comprehensive list of routine maintenance or popular projects for your home.
+                     With HandyDandy, you are given the option to DIY. Browse our comprehensive list of routine maintenance or popular projects for your home.
                     </p>
                     <div className="mt-6">
                       <a

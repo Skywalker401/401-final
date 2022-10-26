@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { Fragment } from 'react'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import { useUser } from "@auth0/nextjs-auth0";
-import referToWikihow from '../utils/referToWikihow';
+import referToWikihow from '../../utils/referToWikihow.js';
+import useApi from '../../hooks/useApi.js';
 import {
   ChatBubbleLeftEllipsisIcon,
   CodeBracketIcon,
@@ -33,7 +34,7 @@ import {
   XMarkIcon,
 
 } from '@heroicons/react/24/outline'
-import useApi from '../hooks/useApi';
+
 
 
 

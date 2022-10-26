@@ -2,6 +2,7 @@ import AboutUs from "../components/AboutUs";
 import SideNav from "../components/SideNav";
 import {useUser} from "@auth0/nextjs-auth0";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 
 export default function About() {
@@ -22,9 +23,10 @@ export default function About() {
 
 </div>
                     </div>
+                <Footer/>
                 </div>
                 :
-                <AboutUs/>
+                <><AboutUs/> <Footer/></>
                 }
 
 

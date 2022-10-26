@@ -65,14 +65,14 @@ export default function AboutUs() {
   return (
     <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 ">
 
-      {team.map((team) => (
+      {team.map((team, index) => (
 
         <div className="flex flex-wrap -mx-1 lg:-mx-4">
 
           <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-full ">
 
 
-            <article className="overflow-hidden rounded-lg shadow-lg">
+            <article key={index} className="overflow-hidden rounded-lg shadow-lg">
 
               <a href={team.href}>
                 <img alt={team.imageAlt} className="block h-auto w-full" src={team.imageSrc} />

@@ -67,7 +67,7 @@ export default function AboutUs() {
             </h1>
           </header>
           <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-              <p>{team.about}</p>
+              <p> {team.about} </p>
           </footer>
         </article>
       </div>

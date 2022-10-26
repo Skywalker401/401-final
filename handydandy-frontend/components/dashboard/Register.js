@@ -23,19 +23,20 @@ export default function Register(props) {
       // event.preventDefault();
       console.log(user, 'form user');
 
-      axios({
-        method: 'post',
-        url: 'https://handy-dandy.azurewebsites.net/api/create-user',
-        data: {
-          sid:user.sid,
-          name: user.name,
-          email: user.email,
-          address:user.address,
-          city:user.city,
-          zip:user.zip
-        },
-        headers: { Authorization: `Bearer ${props.token}` }
-      }).then(console.log).catch(console.log);
+    //   axios({
+    //     method: 'post',
+    //     url: 'https://handy-dandy.azurewebsites.net/api/create-user',
+    //     data: {
+    //       sid:user.sid,
+    //       name: user.name,
+    //       email: user.email,
+    //       address:user.address,
+    //       city:user.city,
+    //       zip:user.zip,
+    //       is_pro:false
+    //     },
+    //     headers: { Authorization: `Bearer ${props.token}` }
+    //   }).then(console.log).catch(console.log);
     };
       
 
@@ -51,6 +52,8 @@ export default function Register(props) {
         <input type="text" name="city" onChange={handleChange} />
         <label htmlFor="zip">Zipcode</label>
         <input type="text" name="zip" onChange={handleChange} />
+        <label htmlFor="pro">Pro</label>
+        <input type="checkbox" name="pro" onChange={handleChange} />
         <button>Register</button>
       </form>
     );

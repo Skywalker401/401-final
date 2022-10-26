@@ -11,7 +11,7 @@ export default function Dashboard() {
     
     return (
         <>
-            { isLoading ? <p>Loading</p> : data !== undefined ? <Registered user={data} /> : <Register user={user} token={token} /> }
+            { data !== undefined ? <Registered user={data} /> : <Register user={user} token={token} /> }
         </>
     );
   }

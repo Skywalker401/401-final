@@ -4,13 +4,13 @@ HandyDandy is an app for people in need of home maintenance or have desires to u
 
 ## Wireframes
 
-![Handy Dandy Wireframes](img/HandyDandyWireframes.jpg)
+![Handy Dandy Wireframes](handydandy-frontend/img/HandyDandyWireframes.jpg)
 
 ## [User Stories](https://github.com/Skywalker401/handydandy/issues/2)
 
 ## Domain Model
 
-![Domain Model](img/dataflow.png)
+![Domain Model](handydandy-frontend/img/dataflow.png)
 
 ## Database Schema Diagram
 

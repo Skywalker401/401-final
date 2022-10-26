@@ -43,7 +43,7 @@ export default function Registered(props) {
       datetime: '2020-12-09T11:43:00',
       href: '#',
       title: 'Replace Water Filter',
-      Notes: JSON.stringify(props.user.name),
+      Notes:JSON.stringify(props.user[0].name),
     },
     // More questions...
   ]

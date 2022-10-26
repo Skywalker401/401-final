@@ -7,9 +7,7 @@ import useToken from "../../hooks/useToken.js";
 export default function Dashboard() {
     const { user } = useUser()
     const { token } = useToken()
-    const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
-   
-    
+    const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')  
   
     function checkRegister(){
         if(isLoading === true){

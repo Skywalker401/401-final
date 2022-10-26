@@ -1,7 +1,7 @@
 
 /*
   This example requires some changes to your config:
-
+  adding something
   ```
   // tailwind.config.js
   module.exports = {

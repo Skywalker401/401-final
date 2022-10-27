@@ -64,25 +64,25 @@ export default function AboutUs() {
   return (
     <>
       {team.map((team) =>(
-        <div className="card card-plain">
-        <div className="flex">
-          <div className="w-1/3">
-            <Image
-              className="rounded-lg"
-              src={team.src}
-              alt="card image"
-            />
-          </div>
-          <div className="card-body w-2/3">
-            <span className="font-bold uppercase text-rose">{team.name}</span>
-            <p className="mb-5 opacity-80">
-              {team.about}
-            </p>
-            <p className="font-bold text-mediumBlue"><a target="_blank" href={team.linkedIn}>LinkedIn</a>.</p>
-            <p className="font-bold text-mediumBlue"><a target="_blank" href={team.GitHub}>GitHub</a>.</p>
+        <div key={team.id} className="card card-plain">
+          <div className="flex">
+            <div className="w-1/3">
+              <Image
+                className="rounded-lg"
+                src={team.src}
+                alt="card image"
+              />
+            </div>
+            <div className="card-body w-2/3">
+              <span className="font-bold uppercase text-rose">{team.name}</span>
+              <p className="mb-5 opacity-80">
+                {team.about}
+              </p>
+              <p className="font-bold text-mediumBlue"><a target="_blank" href={team.linkedIn}>LinkedIn</a>.</p>
+              <p className="font-bold text-mediumBlue"><a target="_blank" href={team.GitHub}>GitHub</a>.</p>
+            </div>
           </div>
         </div>
-      </div>
       ))}
     </>
   )

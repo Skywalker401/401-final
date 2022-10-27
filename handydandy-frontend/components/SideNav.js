@@ -5,7 +5,7 @@ const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
   { name: 'Project Ideas', href: '/projects', icon: LightBulbIcon, current: false },
   { name: 'About Us', href:'/about', icon: UserGroupIcon, current: false },
-  { name: 'Contact Us', href: '/contact', icon: EnvelopeOpenIcon, current: false },
+  { name: 'Contact Us', href: '/contactUs', icon: EnvelopeOpenIcon, current: false },
 ]
 
 function classNames(...classes) {

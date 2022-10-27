@@ -13,7 +13,7 @@ const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
   { name: 'Project Ideas', href: '/project-ideas', icon: LightBulbIcon, current: false },
   { name: 'About Us', href: '/about', icon: UserGroupIcon, current: false },
-  { name: 'Contact Us', href: '#', icon: EnvelopeOpenIcon, current: false },
+  { name: 'Contact Us', href: '/contactUs', icon: EnvelopeOpenIcon, current: false },
 ]
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -25,7 +25,7 @@ const userNavigation = [
   { name: 'Your Profile', href: '/profile' },
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: "/api/auth/logout" },
-  { name: 'New Task', href: "/new-task" },
+  { name: 'Contact', href: "/contactUs" },
 ]
 
 export default function NavBar() {
@@ -153,8 +153,8 @@ export default function NavBar() {
                         {user ? <img className="w-10 h-10 rounded-full" src={user.picture} alt="" /> : <p>Please Login</p>}
                       </div>
                       <div className="ml-3">
-                        {user ? <div className="text-base font-medium text-gray-800">{user.name}</div> : <p>Please Login</p>}
-                        {user ? <div className="text-sm font-medium text-gray-500">{user.email}</div> : <p>Please Login</p>}
+                        {/* {user ? <div className="text-base font-medium text-gray-800">{user.name}</div> : <p>Please Login</p>} */}
+                        {/* {user ? <div className="text-sm font-medium text-gray-500">{user.email}</div> : <p>Please Login</p>} */}
                       </div>
                       <button
                         type="button"

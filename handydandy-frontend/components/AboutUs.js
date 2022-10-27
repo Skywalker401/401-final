@@ -4,6 +4,8 @@ import brian from "../img/brian.jpeg"
 import aoife from "../img/aoife.jpg"
 import sergii from "../img/sergii.jpg"
 import brendon from "../img/brendon.jpeg"
+
+// add more links to object is need
   const team = [
   {
     id: 1,

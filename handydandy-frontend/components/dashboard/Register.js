@@ -61,36 +61,37 @@ export default function Register(props) {
         }
       }
 
-      let data = {
-        sid: user.sid,
-        name: user.name,
-        email: user.email,
-        address: user.address,
-        city: user.city,
-        zip: user.zip,
-        is_pro: isChecked, //checks true/false/pro
-        competencies: comps //competancies object
-      }
+      // let data = {
+      //   sid: user.sid,
+      //   name: user.name,
+      //   email: user.email,
+      //   address: user.address,
+      //   city: user.city,
+      //   zip: user.zip,
+      //   is_pro: isChecked, //checks true/false/pro
+      //   competencies: comps //competancies object
+      // }
 
       console.log(data);
 
       
 
-      // axios({
-      //   method: 'post',
-      //   url: 'https://handy-dandy.azurewebsites.net/api/create-user',
-      //   data: {
-      //     sid:user.sid,
-      //     name: user.name,
-      //     email: user.email,
-      //     address:user.address,
-      //     city:user.city,
-      //     zip:user.zip,
-      //     is_pro:isChecked, //checks true/false/pro
-      //     competencies:comps //competancies object
-      //   },
-      //   headers: { Authorization: `Bearer ${props.token}` }
-      // }).then(console.log).catch(console.log);
+      axios({
+        method: 'post',
+        url: 'https://handy-dandy.azurewebsites.net/api/create-user',
+        data: {
+          sid:user.sid,
+          name: user.name,
+          email: user.email,
+          address:user.address,
+          city:user.city,
+          zip:user.zip,
+          is_pro:isChecked, //checks true/false/pro
+          competencies:comps //competancies object
+        },
+        
+        headers: { Authorization: `Bearer ${props.token}` }
+      }).then(console.log).catch(console.log);
     };  
 
     return (

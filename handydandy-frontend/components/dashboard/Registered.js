@@ -69,7 +69,7 @@ export default function Dashboard() {
       href: '#',
       title: 'Replace Water Filter',
       Notes: `
-      <p> ${JSON.stringify(data)} </p>
+      
     `,
     },
     // More questions...

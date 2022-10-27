@@ -1,51 +1,24 @@
-import Link from 'next/link'
+
 import { Fragment } from 'react'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import { useUser } from '@auth0/nextjs-auth0';
 import referToWikihow from '../../utils/referToWikihow.js';
 import useApi from '../../hooks/useApi';
 import {
-  ChatBubbleLeftEllipsisIcon,
-  CodeBracketIcon,
   EllipsisVerticalIcon,
-  EyeIcon,
-  FlagIcon,
-  HandThumbUpIcon,
-  MagnifyingGlassIcon,
-  PlusIcon,
-  ShareIcon,
-  StarIcon,
-  LightBulbIcon,
   WrenchScrewdriverIcon,
-  EnvelopeOpenIcon,
   ArrowPathIcon,
   TrashIcon,
   CheckCircleIcon,
 
 
 } from '@heroicons/react/20/solid'
-import {
-  ArrowTrendingUpIcon,
-  Bars3Icon,
-  BellIcon,
-  FireIcon,
-  HomeIcon,
-  UserGroupIcon,
-  XMarkIcon,
-
-} from '@heroicons/react/24/outline'
-
-
-
-
 
 const tabs = [
   { name: 'Maintenance Required', href: '#', current: true },
   { name: 'Home Upgrades', href: '#', current: false },
   { name: 'Completed', href: '#', current: false },
 ]
-
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -72,19 +45,9 @@ export default function Dashboard() {
       
     `,
     },
-    // More questions...
-
-
   ]
   return (
     <>
-      {/*<div className="min-h-full">*/}
-      {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
-
-
-      {/*<div className="py-10">*/}
-      {/*  <div className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">*/}
-
       <main className="lg:col-span-9 xl:col-span-6">
         <div className="px-4 sm:px-0">
           <div className="sm:hidden">
@@ -92,7 +55,7 @@ export default function Dashboard() {
               Select a tab
             </label>
             <select
-              id="question-tabs"
+              id="task-tabs"
               className="block w-full text-base font-medium text-gray-900 border-gray-300 rounded-md shadow-sm focus:border-darkBlue focus:ring-darkBlue"
               defaultValue={tabs.find((tab) => tab.current).name}
             >
@@ -134,11 +97,10 @@ export default function Dashboard() {
 
             {tasks.map((tasks) => (
               <li key={tasks.id} className="px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6">
-                <article aria-labelledby={'question-title-' + tasks.id}>
+                <article aria-labelledby={'task-title-' + tasks.id}>
                   <div>
                     <div className="flex space-x-3">
                       <div className="flex-shrink-0">
-                        {/*<img className="w-10 h-10 rounded-full" src={tasks.author.imageUrl} alt="" />*/}
                         <WrenchScrewdriverIcon className="w-5 h-5" aria-hidden="true" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -224,7 +186,7 @@ export default function Dashboard() {
                         </Menu>
                       </div>
                     </div>
-                    <h2 id={'question-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
+                    <h2 id={'task-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
                       {tasks.title}
                     </h2>
                     <button onClick={() => referToWikihow(tasks.title)}>DIY</button>
@@ -245,9 +207,6 @@ export default function Dashboard() {
 
         </div>
       </aside>
-      {/*  </div>*/}
-      {/*</div>*/}
-      {/*</div>*/}
     </>
   )
 }

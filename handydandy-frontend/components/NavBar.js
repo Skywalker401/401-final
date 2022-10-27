@@ -1,14 +1,16 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon, UserGroupIcon, HomeIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
+import Image from 'next/image';
+import logo from '../img/handydandylogo.svg';
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 import { EnvelopeOpenIcon, LightBulbIcon } from "@heroicons/react/20/solid";
+import LandingPage from "./LandingPage";
+
 
 const navigation = [
   { name: 'Home', href: '#', icon: HomeIcon, current: true },
-
   { name: 'Project Ideas', href: '#', icon: LightBulbIcon, current: false },
   { name: 'About Us', href: '/about', icon: UserGroupIcon, current: false },
   { name: 'Contact Us', href: '#', icon: EnvelopeOpenIcon, current: false },
@@ -46,18 +48,21 @@ export default function NavBar() {
                   <div className="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
                     <div className="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
                       <div className="flex items-center flex-shrink-0">
-                        <a href="#">
-                          <img
+                        <a href="/#">
+                          <Image
                             className="block w-auto h-8"
-                            src="/hd.svg"
+                            src={logo}
+                            width={100}
+                            height={75}
                             alt="HandyDandy"
                           />
                         </a>
                       </div>
                     </div>
-                    <div className="flex-1 min-w-0 md:px-8 lg:px-0 xl:col-span-6">
-                      <div className="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0 fa-font">
-                        <h1>Handy Dandy</h1>
+                    <div className="flex-1 min-w-0 md:px-8 lg:px-0 xl:col-span-6
+                    ">
+                      <div className="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                        <h1 className="block text-black p-3 pl-40 pb-10">Handy Dandy</h1>
                       </div>
                     </div>
                     <div className="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
@@ -118,7 +123,7 @@ export default function NavBar() {
                             ))}
                           </Menu.Items>
                         </Transition>
-                      </Menu> : <a href="/api/auth/login">Login</a>}
+                      </Menu> : <a href="/api/auth/login" className="inline-block rounded-md border border-transparent bg-white py-2 px-4 text-base font-medium ml-2">Login</a>}
 
 
                     </div>
@@ -171,18 +176,6 @@ export default function NavBar() {
                     </div>
                   </div>
 
-                  <div className="max-w-3xl px-4 mx-auto mt-6 sm:px-6">
-                    <a
-                      href="#"
-                      className="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-white border border-transparent rounded-md shadow-sm hover:bg-lightGray"
-                    >
-                      New Post
-                    </a>
-
-                    <div className="flex justify-center mt-6">
-
-                    </div>
-                  </div>
                 </Popover.Panel>
               </>
             )}

@@ -10,9 +10,9 @@ export default function Dashboard() {
     const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')  
     
     return (
-        <div>
+        <>
             { data !== undefined ? <Registered user={data} /> : <Register user={user} token={token} /> }
-        </div>
+        </>
     );
   }
 

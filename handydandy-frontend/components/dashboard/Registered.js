@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import NewTask from '../../pages/new-task.js';
+import NewTask from './new-task.js';
 import { Fragment } from 'react'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import { useUser } from '@auth0/nextjs-auth0';

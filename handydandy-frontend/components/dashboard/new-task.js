@@ -1,9 +1,9 @@
 import { useState } from "react";
-import AboutUs from "../components/AboutUs";
-import SideNav from "../components/SideNav";
+import AboutUs from "../AboutUs";
+import SideNav from "../SideNav";
 import {useUser} from "@auth0/nextjs-auth0";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
+import NavBar from "../NavBar";
+import Footer from "../Footer";
 import axios from "axios";
 
 export default function NewTask(props){
@@ -27,21 +27,20 @@ export default function NewTask(props){
     
     //  handle the request
       const handleSubmit = (event) => {
-        console.log(props.user.id);
-        // axios({
-        //   method: 'post',
-        //   url: 'https://handy-dandy.azurewebsites.net/api/create-task',
-        //   data: {
-        //     owner:task.owner,
-        //     name: task.name,
-        //     category:task.category,
-        //     description:task.description,
-        //     period_months:task.period_months,
-        //     last_performed:task.last_performed  
-        //   },
+        axios({
+          method: 'post',
+          url: 'https://handy-dandy.azurewebsites.net/api/create-task',
+          data: {
+            owner:task.owner,
+            name: task.name,
+            category:task.category,
+            description:task.description,
+            period_months:task.period_months,
+            last_performed:task.last_performed  
+          },
   
-        //   headers: { Authorization: `Bearer ${props.token}` }
-        // }).then(console.log).catch(console.log);
+          headers: { Authorization: `Bearer ${props.token}` }
+        }).then(console.log).catch(console.log);
       };  
 
     

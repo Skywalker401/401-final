@@ -15,8 +15,7 @@ import {
 } from '@heroicons/react/20/solid'
 
 const tabs = [
-  { name: 'Maintenance Required', href: '#', current: true },
-  { name: 'Home Upgrades', href: '#', current: false },
+  { name: 'Incomplete', href: '#', current: true },
   { name: 'Completed', href: '#', current: false },
 ]
 

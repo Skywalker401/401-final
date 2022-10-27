@@ -25,6 +25,7 @@ const userNavigation = [
   { name: 'Your Profile', href: '/profile' },
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: "/api/auth/logout" },
+  { name: 'New Task', href: "/new-task" },
 ]
 
 export default function NavBar() {

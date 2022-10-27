@@ -16,7 +16,8 @@ module.exports = {
         'lightGray' : '#BFBEB4',
         'brown' : '#8C694A',
           'white': '#FFFFFF',
-         rose: colors.rose,
+        'rose': '#a64452',
+        
       }
   },
   plugins: [

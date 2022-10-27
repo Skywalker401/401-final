@@ -3,7 +3,7 @@ import marni from "../img/marni.JPG"
 import brian from "../img/brian.jpeg"
 import aoife from "../img/aoife.jpg"
 import sergii from "../img/sergii.jpg"
-import brendon from "../img/brendon.jpeg"
+import brendon from "../img/brendon.jpg"
 
 // add more links to object is need
   const team = [
@@ -23,7 +23,7 @@ import brendon from "../img/brendon.jpeg"
     href: '#',
     src: brendon,
     imageAlt: 'Brendon',
-    about: 'My name is Brendon and I’ll be honest, I didn’t plan on a Career in Web Development. at first, I coded because I enjoyed it, then I realized that if I want to make something serious out of it, I need to learn the industry and practices. So here I am. I really enjoy solving problems and I am very proficient with technology. Between building my truck, motorcycle and tearing apart any electronics I can get my hands on, The next step in my learning adventure is building programs and software.',
+    about: 'My name is Brendon and I’ll be honest, I didn’t plan on a Career in Web Development. at first, I coded because I enjoyed it, then I realized that if I want to make something serious out of it, I need to learn the industry and practices. So here I am.',
     linkedIn:"https://www.linkedin.com/in/brendon-hampton-37132899/",
     GitHub:"https://github.com/BrendonLH"
   },

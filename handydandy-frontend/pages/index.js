@@ -5,8 +5,6 @@ import SideNav from "../components/SideNav";
 import LandingPage from "../components/LandingPage";
 import Footer from "../components/Footer";
 
-
-
 export default function Home() {
     const { user } = useUser();
 
@@ -21,7 +19,7 @@ export default function Home() {
                             className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
 
                             <SideNav/>
-                            <Dashboard/>
+                            <Dashboard />
 
                         </div>
                         <Footer/>

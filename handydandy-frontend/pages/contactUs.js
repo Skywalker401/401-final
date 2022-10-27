@@ -3,10 +3,10 @@ import SideNav from "../components/SideNav";
 import {useUser} from "@auth0/nextjs-auth0";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import Contact from "../components/Contact";
 
-export default function About() {
+export default function ContactUs(){
     const {user} = useUser();
-
     return (
         <>
             <NavBar/>
@@ -16,7 +16,7 @@ export default function About() {
                         className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
                         <SideNav />
                         <div className="col-span-9">
-                            <AboutUs />
+                            <Contact />
                         </div>
                     </div>
                 </div>
@@ -25,8 +25,7 @@ export default function About() {
                 :
                 <><AboutUs /> <Footer /></>
             }
-
-
+           
         </>
     )
 }

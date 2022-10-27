@@ -1,4 +1,5 @@
-
+import { useState } from 'react';
+import NewTask from './new-task.js';
 import { Fragment } from 'react'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import { useUser } from '@auth0/nextjs-auth0';
@@ -37,13 +38,31 @@ function isOverdue(task) {
 }
 
 export default function Dashboard(props) {
-  const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
   const { user } = useUser()
   const tasks = props.user[1];
-  console.log(tasks)
+  const data = props.user[0]
+  const token = props.token;
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = (event) => {
+    console.log(isChecked)
+    if(isChecked){
+      setIsChecked(false)
+    }else{
+      setIsChecked(true)
+    }
+  };
+  
+
   return (
     <>
       <main className="lg:col-span-9 xl:col-span-6">
+        <button onClick={handleChange} class="bg-lightBlue hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+          <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
+          <span>New Task</span>
+        </button>
+        {isChecked?<NewTask user={data} token={token} /> : null }
         <div className="px-4 sm:px-0">
           <div className="sm:hidden">
             <label htmlFor="question-tabs" className="sr-only">

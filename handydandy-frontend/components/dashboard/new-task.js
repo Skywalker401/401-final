@@ -9,8 +9,11 @@ import axios from "axios";
 export default function NewTask(props){
 
     const {user} = useUser();
-    let today = new Date()
-    console.log(props);
+    let d = new Date();
+    let curr_date = d.getDate();
+    let curr_month = d.getMonth() + 1;
+    let curr_year = d.getFullYear();
+    let today = curr_year + "-" + curr_month + "-" + curr_date;
 
     const [task, setTask] = useState({
         owner:props.user.id,
@@ -27,20 +30,22 @@ export default function NewTask(props){
     
     //  handle the request
       const handleSubmit = (event) => {
-        axios({
-          method: 'post',
-          url: 'https://handy-dandy.azurewebsites.net/api/create-task',
-          data: {
-            owner:task.owner,
-            name: task.name,
-            category:task.category,
-            description:task.description,
-            period_months:task.period_months,
-            last_performed:task.last_performed  
-          },
+        parseFloat(task.period_months);
+        console.log(task);
+        // axios({
+        //   method: 'post',
+        //   url: 'https://handy-dandy.azurewebsites.net/api/create-task',
+        //   data: {
+        //     owner:task.owner,
+        //     name: task.name,
+        //     home_area:task.category,
+        //     description:task.description,
+        //     period_months:task.period_months,
+        //     last_performed:task.last_performed  
+        //   },
   
-          headers: { Authorization: `Bearer ${props.token}` }
-        }).then(console.log).catch(console.log);
+        //   headers: { Authorization: `Bearer ${props.token}` }
+        // }).then(console.log).catch(console.log);
       };  
 
     
@@ -75,7 +80,7 @@ export default function NewTask(props){
                                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-city">
                                         Maintenance
                                         </label>
-                                        <input name="period_months" onChange={handleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="number" placeholder="6"/>
+                                        <input name="period_months" onChange={handleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="number" step="1" placeholder="6"/>
                                         <p className="text-gray-600 text-xs italic">Scheduled Routine Maintenance </p>
                                     </div>
                                     <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">

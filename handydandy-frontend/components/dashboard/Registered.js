@@ -40,6 +40,7 @@ function isOverdue(task) {
 export default function Dashboard(props) {
   const { user } = useUser()
   const tasks = props.user[1];
+  console.log(tasks);
   const data = props.user[0]
   const token = props.token;
 
@@ -58,11 +59,6 @@ export default function Dashboard(props) {
   return (
     <>
       <main className="lg:col-span-9 xl:col-span-6">
-        <button onClick={handleChange} class="bg-lightBlue hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-          <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
-          <span>New Task</span>
-        </button>
-        {isChecked?<NewTask user={data} token={token} /> : null }
         <div className="px-4 sm:px-0">
           <div className="sm:hidden">
             <label htmlFor="question-tabs" className="sr-only">
@@ -77,6 +73,13 @@ export default function Dashboard(props) {
                 <option key={tab.name}>{tab.name}</option>
               ))}
             </select>
+          </div>
+          <button onClick={handleChange} class="bg-lightBlue hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
+            <span>New Task</span>
+          </button>
+          <div>
+            {isChecked ? <NewTask user={data} token={token} /> : null}
           </div>
           <div className="hidden sm:block">
             <nav className="flex divide-x rounded-lg shadow isolate divide-darkBlue bg-lightBlue" aria-label="Tabs">
@@ -105,6 +108,7 @@ export default function Dashboard(props) {
             </nav>
           </div>
         </div>
+        
         <div className="mt-4">
           <h1 className="sr-only">Upcoming Maintenance</h1>
           <ul role="list" className="space-y-4">

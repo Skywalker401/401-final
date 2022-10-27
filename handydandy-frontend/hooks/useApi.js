@@ -29,7 +29,7 @@ const useApi = (url) => {
   useEffect(() => {
     if(token == null) return;
     fetchData();
-  }, [token]);
+  }, [token, data]);
 
   return { data, isLoading };
 }

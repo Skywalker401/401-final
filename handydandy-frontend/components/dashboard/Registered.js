@@ -5,6 +5,7 @@ import { Menu, Popover, Transition } from '@headlessui/react'
 import { useUser } from '@auth0/nextjs-auth0';
 import referToWikihow from '../../utils/referToWikihow.js';
 import useApi from '../../hooks/useApi';
+import axios from 'axios';
 import {
   EllipsisVerticalIcon,
   WrenchScrewdriverIcon,
@@ -37,23 +38,45 @@ function isOverdue(task) {
   }
 }
 
+function useForceUpdate(){
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue(value => value + 1); // update state to force render
+  // An function that increment 👆🏻 the previous state like here 
+  // is better than directly setting `value + 1`
+}
+
 export default function Dashboard(props) {
+  const forceUpdate = useForceUpdate();
   const { user } = useUser()
   const tasks = props.user[1];
-  console.log(tasks);
-  const data = props.user[0]
+  const data2 = props.user[0]
   const token = props.token;
+
+  const { data } = useApi('https://handy-dandy.azurewebsites.net/api/get-user');
 
   const [isChecked, setIsChecked] = useState(false);
 
+  const [refresh, setRefresh] = useState(0);
+
   const handleChange = (event) => {
-    console.log(isChecked)
     if(isChecked){
       setIsChecked(false)
     }else{
       setIsChecked(true)
     }
   };
+
+  const deleteTask = (id) => {
+    axios({
+        method: 'post',
+        url: 'https://handy-dandy.azurewebsites.net/api/delete-task',
+        data: {
+            id:id
+        },
+
+        headers: { Authorization: `Bearer ${props.token}` }
+    }).then().catch(console.log);
+};  
   
 
   return (
@@ -79,7 +102,7 @@ export default function Dashboard(props) {
             <span>New Task</span>
           </button>
           <div>
-            {isChecked ? <NewTask user={data} token={token} /> : null}
+            {isChecked ? <NewTask setRefresh={setRefresh}  user={data2} token={token} /> : null}
           </div>
           <div className="hidden sm:block">
             <nav className="flex divide-x rounded-lg shadow isolate divide-darkBlue bg-lightBlue" aria-label="Tabs">
@@ -194,7 +217,7 @@ export default function Dashboard(props) {
                                       )}
                                     >
                                       <TrashIcon className="w-5 h-5 mr-3 text-gray-400" aria-hidden="true" />
-                                      <span>Remove Task</span>
+                                      <span onClick={() => deleteTask(tasks.id)}>Remove Task</span>
                                     </a>
                                   )}
                                 </Menu.Item>

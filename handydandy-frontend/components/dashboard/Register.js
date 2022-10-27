@@ -15,7 +15,7 @@ export default function Register(props) {
       zip:"",
     })
 
-    // competancies for user if pro
+    // competencies for user if pro
     const [comps, setComps] = useState({
         hvac:false,
         electrical:false,
@@ -56,19 +56,6 @@ export default function Register(props) {
           console.log(comps[key]);
         }
       }
-
-      // let data = {
-      //   sid: user.sid,
-      //   name: user.name,
-      //   email: user.email,
-      //   address: user.address,
-      //   city: user.city,
-      //   zip: user.zip,
-      //   is_pro: isChecked, //checks true/false/pro
-      //   competencies: comps //competancies object
-      // }
-
-      
 
       axios({
         method: 'post',

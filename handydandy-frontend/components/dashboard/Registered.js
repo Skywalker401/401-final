@@ -1,43 +1,18 @@
-import Link from 'next/link'
+
 import { Fragment } from 'react'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import { useUser } from '@auth0/nextjs-auth0';
 import referToWikihow from '../../utils/referToWikihow.js';
 import useApi from '../../hooks/useApi';
 import {
-  ChatBubbleLeftEllipsisIcon,
-  CodeBracketIcon,
   EllipsisVerticalIcon,
-  EyeIcon,
-  FlagIcon,
-  HandThumbUpIcon,
-  MagnifyingGlassIcon,
-  PlusIcon,
-  ShareIcon,
-  StarIcon,
-  LightBulbIcon,
   WrenchScrewdriverIcon,
-  EnvelopeOpenIcon,
   ArrowPathIcon,
   TrashIcon,
   CheckCircleIcon,
 
 
 } from '@heroicons/react/20/solid'
-import {
-  ArrowTrendingUpIcon,
-  Bars3Icon,
-  BellIcon,
-  FireIcon,
-  HomeIcon,
-  UserGroupIcon,
-  XMarkIcon,
-
-} from '@heroicons/react/24/outline'
-
-
-
-
 
 const tabs = [
   { name: 'Maintenance Required', href: '#', current: true },
@@ -50,12 +25,10 @@ function classNames(...classes) {
 }
 
 export default function Dashboard(props) {
-  console.log(props.user[1]);
-
-
-
-
+  const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
+  const { user } = useUser()
   const tasks = props.user[1];
+
   return (
     <>
       <main className="lg:col-span-9 xl:col-span-6">
@@ -65,7 +38,7 @@ export default function Dashboard(props) {
               Select a tab
             </label>
             <select
-              id="question-tabs"
+              id="task-tabs"
               className="block w-full text-base font-medium text-gray-900 border-gray-300 rounded-md shadow-sm focus:border-darkBlue focus:ring-darkBlue"
               defaultValue={tabs.find((tab) => tab.current).name}
             >
@@ -107,11 +80,10 @@ export default function Dashboard(props) {
 
             {tasks.map((tasks) => (
               <li key={tasks.id} className="px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6">
-                <article aria-labelledby={'question-title-' + tasks.id}>
+                <article aria-labelledby={'task-title-' + tasks.id}>
                   <div>
                     <div className="flex space-x-3">
                       <div className="flex-shrink-0">
-                        {/*<img className="w-10 h-10 rounded-full" src={tasks.author.imageUrl} alt="" />*/}
                         <WrenchScrewdriverIcon className="w-5 h-5" aria-hidden="true" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -197,6 +169,7 @@ export default function Dashboard(props) {
                         </Menu>
                       </div>
                     </div>
+
                     <h2 id={'question-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
                       {tasks.name}
                     </h2>

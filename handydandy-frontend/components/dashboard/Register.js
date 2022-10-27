@@ -50,10 +50,6 @@ export default function Register(props) {
 
     // post request to create a new user
     const handleSubmit = (event) => {
-      event.preventDefault();
-
-
-
       if(!isChecked){
         for(const key in comps){
           comps[key] = false
@@ -72,8 +68,6 @@ export default function Register(props) {
       //   competencies: comps //competancies object
       // }
 
-      console.log(data);
-
       
 
       axios({
@@ -89,7 +83,7 @@ export default function Register(props) {
           is_pro:isChecked, //checks true/false/pro
           competencies:comps //competancies object
         },
-        
+
         headers: { Authorization: `Bearer ${props.token}` }
       }).then(console.log).catch(console.log);
     };  

@@ -24,11 +24,24 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+function isOverdue(task) {
+  let last = task.last_performed
+  let period = task.period_months
+  let lastDay = new Date(last)
+  let today = new Date()
+  let timediff = today-lastDay
+  if(period*2629800000 <= timediff){
+    return true
+  }else{
+    return false
+  }
+}
+
 export default function Dashboard(props) {
   const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
   const { user } = useUser()
   const tasks = props.user[1];
-
+  console.log(tasks)
   return (
     <>
       <main className="lg:col-span-9 xl:col-span-6">
@@ -79,7 +92,7 @@ export default function Dashboard(props) {
           <ul role="list" className="space-y-4">
 
             {tasks.map((tasks) => (
-              <li key={tasks.id} className="px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6">
+              <li key={tasks.id} className={!isOverdue(tasks)?"px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6":"px-4 py-6 bg-rose shadow sm:rounded-lg sm:p-6"}>
                 <article aria-labelledby={'task-title-' + tasks.id}>
                   <div>
                     <div className="flex space-x-3">

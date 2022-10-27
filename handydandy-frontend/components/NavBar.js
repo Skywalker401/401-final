@@ -10,8 +10,8 @@ import LandingPage from "./LandingPage";
 
 
 const navigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: true },
-  { name: 'Project Ideas', href: '#', icon: LightBulbIcon, current: false },
+  { name: 'Home', href: '/', icon: HomeIcon, current: true },
+  { name: 'Project Ideas', href: '/project-ideas', icon: LightBulbIcon, current: false },
   { name: 'About Us', href: '/about', icon: UserGroupIcon, current: false },
   { name: 'Contact Us', href: '#', icon: EnvelopeOpenIcon, current: false },
 ]
@@ -22,7 +22,7 @@ function classNames(...classes) {
 
 
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
+  { name: 'Your Profile', href: '/profile' },
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: "/api/auth/logout" },
 ]

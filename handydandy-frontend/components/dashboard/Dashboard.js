@@ -7,11 +7,10 @@ import useToken from "../../hooks/useToken.js";
 export default function Dashboard() {
     const { user } = useUser()
     const { token } = useToken()
-    const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')  
-    
+    const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
     return (
         <>
-            { data !== undefined ? <Registered user={data} /> : <Register user={user} token={token} /> }
+            { data !== undefined ? <Registered user={data} isLoading={isLoading} /> : <Register user={user} token={token} /> }
         </>
     );
   }

@@ -27,25 +27,11 @@ function classNames(...classes) {
 export default function Dashboard() {
   const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
   const { user } = useUser()
-  console.log(user)
-  const tasks = [
-    {
-      id: '81614',
-      author: {
-        name: 'Kitchen',
-        imageUrl:
-          'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        href: '#',
-      },
-      date: 'December 9 at 11:43 AM',
-      datetime: '2020-12-09T11:43:00',
-      href: '#',
-      title: 'Replace Water Filter',
-      Notes: `
-      
-    `,
-    },
-  ]
+
+export default function Dashboard(props) {
+
+  const tasks = props.user[1];
+
   return (
     <>
       <main className="lg:col-span-9 xl:col-span-6">
@@ -105,13 +91,13 @@ export default function Dashboard() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900">
-                          <a href={tasks.author.href} className="hover:underline">
-                            {tasks.author.name}
+                          <a href={tasks.owner} className="hover:underline">
+                            {tasks.owner}
                           </a>
                         </p>
                         <p className="text-sm text-gray-500">
-                          <a href={tasks.href} className="hover:underline">
-                            <time dateTime={tasks.datetime}>{tasks.date}</time>
+                          <a href={tasks.name} className="hover:underline">
+                            <time dateTime={tasks.period_months}>{tasks.period_months}</time>
                           </a>
                         </p>
                       </div>
@@ -186,14 +172,15 @@ export default function Dashboard() {
                         </Menu>
                       </div>
                     </div>
-                    <h2 id={'task-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
-                      {tasks.title}
+
+                    <h2 id={'question-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
+                      {tasks.name}
                     </h2>
-                    <button onClick={() => referToWikihow(tasks.title)}>DIY</button>
+                    <button onClick={() => referToWikihow(tasks.name)}>DIY</button>
                   </div>
-                  {data ? <div
+                  {props.user ? <div
                     className="mt-2 space-y-4 text-sm text-gray-700"
-                    dangerouslySetInnerHTML={{ __html: tasks.Notes }}
+                    dangerouslySetInnerHTML={{ __html: tasks.description }}
                   /> : <p>No Data Available</p>}
                 </article>
               </li>
@@ -203,8 +190,6 @@ export default function Dashboard() {
       </main>
       <aside className="hidden xl:col-span-4 xl:block">
         <div className="sticky space-y-4 top-4">
-
-
         </div>
       </aside>
     </>

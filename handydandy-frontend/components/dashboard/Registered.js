@@ -24,12 +24,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
   const { user } = useUser()
-
-export default function Dashboard(props) {
-
   const tasks = props.user[1];
 
   return (

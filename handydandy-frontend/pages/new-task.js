@@ -10,6 +10,7 @@ export default function NewTask(props){
 
     const {user} = useUser();
     let today = new Date()
+    console.log(props);
 
     const [task, setTask] = useState({
         owner:props.user.id,
@@ -26,21 +27,21 @@ export default function NewTask(props){
     
     //  handle the request
       const handleSubmit = (event) => {
+        console.log(props.user.id);
+        // axios({
+        //   method: 'post',
+        //   url: 'https://handy-dandy.azurewebsites.net/api/create-task',
+        //   data: {
+        //     owner:task.owner,
+        //     name: task.name,
+        //     category:task.category,
+        //     description:task.description,
+        //     period_months:task.period_months,
+        //     last_performed:task.last_performed  
+        //   },
   
-        axios({
-          method: 'post',
-          url: 'https://handy-dandy.azurewebsites.net/api/create-task',
-          data: {
-            owner:task.owner,
-            name: task.name,
-            category:task.category,
-            description:task.description,
-            period_months:task.period_months,
-            last_performed:task.last_performed  
-          },
-  
-          headers: { Authorization: `Bearer ${props.token}` }
-        }).then(console.log).catch(console.log);
+        //   headers: { Authorization: `Bearer ${props.token}` }
+        // }).then(console.log).catch(console.log);
       };  
 
     

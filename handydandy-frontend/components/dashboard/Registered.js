@@ -65,7 +65,7 @@ export default function Dashboard(props) {
         {isChecked?<NewTask user={data} token={token} /> : null }
         <div className="px-4 sm:px-0">
           <div className="sm:hidden">
-            <label htmlFor="question-tabs" className="sr-only">
+            <label htmlFor="task-tabs" className="sr-only">
               Select a tab
             </label>
             <select
@@ -158,6 +158,20 @@ export default function Dashboard(props) {
                                         'flex px-4 py-2 text-sm'
                                       )}
                                     >
+                                      <ArrowPathIcon  className="w-5 h-5 mr-3 text-gray-400" aria-hidden="true" />
+                                      <button onClick={handleChange}><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /><span>New Task</span></button>
+                                    </a>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <a
+                                      href="#"
+                                      className={classNames(
+                                        active ? 'bg-red-100 text-gray-900' : 'text-gray-700',
+                                        'flex px-4 py-2 text-sm'
+                                      )}
+                                    >
                                       <ArrowPathIcon className="w-5 h-5 mr-3 text-gray-400" aria-hidden="true" />
                                       <span>Update Task</span>
                                     </a>
@@ -201,7 +215,7 @@ export default function Dashboard(props) {
                       </div>
                     </div>
 
-                    <h2 id={'question-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
+                    <h2 id={'task-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
                       {tasks.name}
                     </h2>
                     <button onClick={() => referToWikihow(tasks.name)}>DIY</button>

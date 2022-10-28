@@ -83,7 +83,7 @@ export default function NavBar() {
                         href="/about"
                         className="flex-shrink-0 p-1 ml-5 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2"
                       >
-                        <span className="sr-only">View notifications</span>
+
 
                         <UserGroupIcon className="w-6 h-6" aria-hidden="true" title="About Us" />
 
@@ -124,7 +124,7 @@ export default function NavBar() {
                             ))}
                           </Menu.Items>
                         </Transition>
-                      </Menu> : <a href="/api/auth/login" className="inline-block rounded-md border border-transparent bg-white py-2 px-4 text-base font-medium ml-2">Login</a>}
+                      </Menu> : <a href="/api/auth/login" className="inline-flex rounded-md border border-transparent bg-gradient-to-r from-darkBlue to-lightBlue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm">Login</a>}
 
 
                     </div>

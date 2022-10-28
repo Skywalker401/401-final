@@ -16,6 +16,8 @@ import {
 
 
 } from '@heroicons/react/20/solid'
+import Task from '../Task.js';
+
 
 
 const tabs = [
@@ -47,7 +49,7 @@ export default function Registered(props) {
   const data2 = props.user[0]
   const token = props.token;
   const [isChecked, setIsChecked] = useState(false);
-  const [isCheckedPros, setIsCheckedPros] = useState(false);
+  // const [isCheckedPros, setIsCheckedPros] = useState(false);
 
 
 
@@ -60,25 +62,25 @@ export default function Registered(props) {
   };
 
 
-  const handleChangePros = () => {
-    if (isCheckedPros) {
-      setIsCheckedPros(false)
-    } else {
-      setIsCheckedPros(true)
-    }
-  };
+  // const handleChangePros = () => {
+  //   if (isCheckedPros) {
+  //     setIsCheckedPros(false)
+  //   } else {
+  //     setIsCheckedPros(true)
+  //   }
+  // };
 
-  const deleteTask = (id) => {
-    axios({
-      method: 'post',
-      url: 'https://handy-dandy.azurewebsites.net/api/delete-task',
-      data: {
-        id: id
-      },
+  // const deleteTask = (id) => {
+  //   axios({
+  //     method: 'post',
+  //     url: 'https://handy-dandy.azurewebsites.net/api/delete-task',
+  //     data: {
+  //       id: id
+  //     },
 
-      headers: { Authorization: `Bearer ${props.token}` }
-    }).then(() => props.setData([data2, tasks.filter(task => task.id !== id)])).catch(console.log);
-  };
+  //     headers: { Authorization: `Bearer ${props.token}` }
+  //   }).then(() => props.setData([data2, tasks.filter(task => task.id !== id)])).catch(console.log);
+  // };
 
 
 
@@ -144,107 +146,7 @@ export default function Registered(props) {
 
             {tasks.map((tasks) => (
               <li key={tasks.id} className={!isOverdue(tasks) ? "px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6" : "px-4 py-6 bg-rose shadow sm:rounded-lg sm:p-6"}>
-                <article aria-labelledby={'task-title-' + tasks.id}>
-                  <div>
-                    <div className="flex space-x-3">
-                      <div className="flex-shrink-0">
-                        <WrenchScrewdriverIcon className="w-5 h-5" aria-hidden="true" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-
-                        <p className="text-sm text-gray-500">
-                          <a href={tasks.name} className="hover:underline">
-                            <time dateTime={tasks.period_months}>Service Interval: {tasks.period_months}</time>
-                          </a>
-                        </p>
-                      </div>
-                      <div className="flex self-center flex-shrink-0">
-                        <Menu as="div" className="relative inline-block text-left">
-                          <div>
-                            <Menu.Button className="flex items-center p-2 -m-2 text-gray-400 rounded-full hover:text-gray-600">
-                              <span className="sr-only">Open options</span>
-                              <EllipsisVerticalIcon className="w-5 h-5" aria-hidden="true" />
-                            </Menu.Button>
-                          </div>
-
-                          <Transition
-                            as={Fragment}
-                            enter="transition ease-out duration-100"
-                            enterFrom="transform opacity-0 scale-95"
-                            enterTo="transform opacity-100 scale-100"
-                            leave="transition ease-in duration-75"
-                            leaveFrom="transform opacity-100 scale-100"
-                            leaveTo="transform opacity-0 scale-95"
-                          >
-                            <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                              <div className="py-1">
-                                <Menu.Item>
-                                  {({ active }) => (
-                                    <a
-                                      href="#"
-                                      className={classNames(
-                                        active ? 'bg-red-100 text-gray-900' : 'text-gray-700',
-                                        'flex px-4 py-2 text-sm'
-                                      )}
-                                    >
-                                      <ArrowPathIcon className="w-5 h-5 mr-3 text-gray-400" aria-hidden="true" />
-                                      <span>Update Task</span>
-                                    </a>
-                                  )}
-                                </Menu.Item>
-                                <Menu.Item>
-                                  {({ active }) => (
-                                    <a
-                                      href="#"
-                                      className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'flex px-4 py-2 text-sm'
-                                      )}
-                                    >
-                                      <CheckCircleIcon
-                                        className="w-5 h-5 mr-3 text-gray-400"
-                                        aria-hidden="true"
-                                      />
-                                      <span>Mark Complete</span>
-                                    </a>
-                                  )}
-                                </Menu.Item>
-                                <Menu.Item>
-                                  {({ active }) => (
-                                    <a
-                                      href="#"
-                                      className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                        'flex px-4 py-2 text-sm'
-                                      )}
-                                    >
-                                      <TrashIcon className="w-5 h-5 mr-3 text-gray-400" aria-hidden="true" />
-                                      <span onClick={() => deleteTask(tasks.id)}>Remove Task</span>
-                                    </a>
-                                  )}
-                                </Menu.Item>
-                              </div>
-                            </Menu.Items>
-                          </Transition>
-                        </Menu>
-                      </div>
-                    </div>
-
-                    <h2 id={'question-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
-                      {tasks.name}
-                    </h2>
-                    {props.user ? <div
-                      className="mt-2 space-y-4 text-sm text-gray-700"
-                      dangerouslySetInnerHTML={{ __html: tasks.description }}
-                    /> : <p>No Data Available</p>}
-                    <button onClick={() => referToWikihow(tasks.name)}>DIY</button><br />
-                    <button onClick={() => handleChangePros()} >PRO</button>
-                    <div>
-                      {isCheckedPros ? <Pros zip={data2.zip} token={token} /> : null}
-                    </div>
-                  </div>
-
-                </article>
+                <Task tasks={tasks} data2={data2} token={token} user={props.user} setData={props.setData} />
               </li>
             ))}
           </ul>

@@ -10,7 +10,6 @@ const useApi = (url) => {
   const { user } = useUser()
   const user_id = user.sub.split("|")[1]
 
-  // if token not refreshing and react updattin state, use --context-- somewhere here
 
 
   const fetchData = () => {

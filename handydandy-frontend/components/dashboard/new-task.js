@@ -7,6 +7,7 @@ import Footer from "../Footer";
 import axios from "axios";
 
 export default function NewTask(props){
+    
     const {user} = useUser();
     let d = new Date();
     let curr_date = d.getDate();
@@ -45,7 +46,8 @@ export default function NewTask(props){
             },
 
             headers: { Authorization: `Bearer ${props.token}` }
-        }).then().catch(console.log);
+        }).then((res) => console.log(res)).then(() => props.doRefresh()).catch(console.log);
+
     };  
 
     

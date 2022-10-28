@@ -8,6 +8,7 @@ export default function Dashboard() {
     const { user } = useUser()
     const { token } = useToken()
     const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
+    console.log(data);
     return (
         <>
             { data !== undefined ? <Registered user={data} token={token} isLoading={isLoading} /> : <Register user={user} token={token} /> }

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import NewTask from './new-task.js';
+import Pros from './Pros.js';
 import { Fragment } from 'react'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import { useUser } from '@auth0/nextjs-auth0';
@@ -45,19 +46,23 @@ function useForceUpdate(){
   // is better than directly setting `value + 1`
 }
 
-export default function Dashboard(props) {
-  const forceUpdate = useForceUpdate();
-  const { user } = useUser()
+export default function Registered(props) {
+  const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
   const tasks = props.user[1];
   const data2 = props.user[0]
   const token = props.token;
-
-  const { data } = useApi('https://handy-dandy.azurewebsites.net/api/get-user');
-
   const [isChecked, setIsChecked] = useState(false);
+  const [isCheckedPros, setIsCheckedPros] = useState(false);
+  const [refresh, setRefresh ] = useState(false);
 
-  const [refresh, setRefresh] = useState(0);
+  const doRefresh = () => {
+    setRefresh(true)
+  }
+  
 
+  
+  
+  
   const handleChange = (event) => {
     if(isChecked){
       setIsChecked(false)
@@ -66,19 +71,30 @@ export default function Dashboard(props) {
     }
   };
 
+
+  const handleChangePros = (event) => {
+    if(isCheckedPros){
+      setIsCheckedPros(false)
+    }else{
+      setIsCheckedPros(true)
+    }
+  };
+
   const deleteTask = (id) => {
     axios({
-        method: 'post',
-        url: 'https://handy-dandy.azurewebsites.net/api/delete-task',
-        data: {
-            id:id
-        },
+      method: 'post',
+      url: 'https://handy-dandy.azurewebsites.net/api/delete-task',
+      data: {
+        id: id
+      },
 
-        headers: { Authorization: `Bearer ${props.token}` }
+      headers: { Authorization: `Bearer ${props.token}` }
     }).then().catch(console.log);
-};  
+  }; 
+
   
 
+ 
   return (
     <>
       <main className="lg:col-span-9 xl:col-span-6">
@@ -97,12 +113,12 @@ export default function Dashboard(props) {
               ))}
             </select>
           </div>
-          <button onClick={handleChange} class="bg-lightBlue hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
+          <button onClick={handleChange} className="bg-lightBlue hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+            <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
             <span>New Task</span>
           </button>
           <div>
-            {isChecked ? <NewTask setRefresh={setRefresh}  user={data2} token={token} /> : null}
+            {isChecked ? <NewTask doRefresh={doRefresh} user={data2} token={token} /> : null}
           </div>
           <div className="hidden sm:block">
             <nav className="flex divide-x rounded-lg shadow isolate divide-darkBlue bg-lightBlue" aria-label="Tabs">
@@ -145,14 +161,10 @@ export default function Dashboard(props) {
                         <WrenchScrewdriverIcon className="w-5 h-5" aria-hidden="true" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900">
-                          <a href={tasks.owner} className="hover:underline">
-                            {tasks.owner}
-                          </a>
-                        </p>
+        
                         <p className="text-sm text-gray-500">
                           <a href={tasks.name} className="hover:underline">
-                            <time dateTime={tasks.period_months}>{tasks.period_months}</time>
+                            <time dateTime={tasks.period_months}>Service Interval: {tasks.period_months}</time>
                           </a>
                         </p>
                       </div>
@@ -231,12 +243,17 @@ export default function Dashboard(props) {
                     <h2 id={'question-title-' + tasks.id} className="mt-4 text-base font-medium text-gray-900">
                       {tasks.name}
                     </h2>
-                    <button onClick={() => referToWikihow(tasks.name)}>DIY</button>
+                    {props.user ? <div
+                      className="mt-2 space-y-4 text-sm text-gray-700"
+                      dangerouslySetInnerHTML={{ __html: tasks.description }}
+                    /> : <p>No Data Available</p>}
+                    <button onClick={() => referToWikihow(tasks.name)}>DIY</button><br/>
+                    <button onClick={handleChangePros} >PRO</button>
+                    <div>
+                      {isCheckedPros ? <Pros zip={data2.zip}  /> : null}
+                    </div>
                   </div>
-                  {props.user ? <div
-                    className="mt-2 space-y-4 text-sm text-gray-700"
-                    dangerouslySetInnerHTML={{ __html: tasks.description }}
-                  /> : <p>No Data Available</p>}
+                  
                 </article>
               </li>
             ))}

@@ -10,7 +10,7 @@ const useApi = (url) => {
   const { user } = useUser()
   const user_id = user.sub.split("|")[1]
 
-  // if token not refreshing and react updattin state, use --context-- somewhere here
+
 
   const fetchData = () => {
     axios
@@ -27,11 +27,11 @@ const useApi = (url) => {
   };
 
   useEffect(() => {
-    if(token == null) return;
+    if (token == null) return;
     fetchData();
   }, [token]);
 
-  return { data, isLoading };
+  return { data, setData, isLoading };
 }
 
 export default useApi;

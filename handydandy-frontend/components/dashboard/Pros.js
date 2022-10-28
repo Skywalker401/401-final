@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Loader from "../Loader";
 
 export default function Pros(props) {
     const [pros, setPros] = useState();
@@ -20,12 +21,16 @@ export default function Pros(props) {
             fetchData();
         }, []);
         console.log(pros);
-        return pros
+
     }
     getPros()
     console.log("PRO", pros)
     return (
-        <><p>PRO</p></>
+        <>
+            {pros
+                ? pros.map((pro, idx) => (<p id={idx}>{pro.name}</p>))
+                : <Loader />}
+        </>
     )
 
 }

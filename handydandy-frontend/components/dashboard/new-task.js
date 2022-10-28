@@ -31,7 +31,8 @@ export default function NewTask(props) {
     };
 
     //  handle the request
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
+        props.setIsChecked(false)
         parseFloat(task.period_months);
         axios({
             method: 'post',

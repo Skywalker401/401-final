@@ -16,7 +16,7 @@ import {
 
 
 } from '@heroicons/react/20/solid'
-import { data } from 'autoprefixer';
+
 
 const tabs = [
   { name: 'Incomplete', href: '#', current: true },
@@ -40,12 +40,6 @@ function isOverdue(task) {
   }
 }
 
-function useForceUpdate() {
-  const [value, setValue] = useState(0); // integer state
-  return () => setValue(value => value + 1); // update state to force render
-  // An function that increment 👆🏻 the previous state like here 
-  // is better than directly setting `value + 1`
-}
 
 export default function Registered(props) {
   // const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
@@ -54,13 +48,6 @@ export default function Registered(props) {
   const token = props.token;
   const [isChecked, setIsChecked] = useState(false);
   const [isCheckedPros, setIsCheckedPros] = useState(false);
-  const [refresh, setRefresh] = useState(false);
-
-  const doRefresh = () => {
-    setRefresh(true)
-  }
-
-
 
 
 
@@ -73,7 +60,7 @@ export default function Registered(props) {
   };
 
 
-  const handleChangePros = (event) => {
+  const handleChangePros = () => {
     if (isCheckedPros) {
       setIsCheckedPros(false)
     } else {
@@ -119,7 +106,7 @@ export default function Registered(props) {
             <span>New Task</span>
           </button>
           <div>
-            {isChecked ? <NewTask doRefresh={doRefresh} setData={props.setData} user={data2} tasks={tasks} token={token} /> : null}
+            {isChecked ? <NewTask setIsChecked={setIsChecked} setData={props.setData} user={data2} tasks={tasks} token={token} /> : null}
           </div>
           <div className="hidden sm:block">
             <nav className="flex divide-x rounded-lg shadow isolate divide-darkBlue bg-lightBlue" aria-label="Tabs">
@@ -249,7 +236,7 @@ export default function Registered(props) {
                       dangerouslySetInnerHTML={{ __html: tasks.description }}
                     /> : <p>No Data Available</p>}
                     <button onClick={() => referToWikihow(tasks.name)}>DIY</button><br />
-                    <button onClick={handleChangePros} >PRO</button>
+                    <button onClick={() => handleChangePros()} >PRO</button>
                     <div>
                       {isCheckedPros ? <Pros zip={data2.zip} token={token} /> : null}
                     </div>

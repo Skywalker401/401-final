@@ -16,6 +16,7 @@ import {
 
 
 } from '@heroicons/react/20/solid'
+import { data } from 'autoprefixer';
 
 const tabs = [
   { name: 'Incomplete', href: '#', current: true },
@@ -31,15 +32,15 @@ function isOverdue(task) {
   let period = task.period_months
   let lastDay = new Date(last)
   let today = new Date()
-  let timediff = today-lastDay
-  if(period*2629800000 <= timediff){
+  let timediff = today - lastDay
+  if (period * 2629800000 <= timediff) {
     return true
-  }else{
+  } else {
     return false
   }
 }
 
-function useForceUpdate(){
+function useForceUpdate() {
   const [value, setValue] = useState(0); // integer state
   return () => setValue(value => value + 1); // update state to force render
   // An function that increment 👆🏻 the previous state like here 
@@ -47,35 +48,35 @@ function useForceUpdate(){
 }
 
 export default function Registered(props) {
-  const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
+  // const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
   const tasks = props.user[1];
   const data2 = props.user[0]
   const token = props.token;
   const [isChecked, setIsChecked] = useState(false);
   const [isCheckedPros, setIsCheckedPros] = useState(false);
-  const [refresh, setRefresh ] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   const doRefresh = () => {
     setRefresh(true)
   }
-  
 
-  
-  
-  
+
+
+
+
   const handleChange = (event) => {
-    if(isChecked){
+    if (isChecked) {
       setIsChecked(false)
-    }else{
+    } else {
       setIsChecked(true)
     }
   };
 
 
   const handleChangePros = (event) => {
-    if(isCheckedPros){
+    if (isCheckedPros) {
       setIsCheckedPros(false)
-    }else{
+    } else {
       setIsCheckedPros(true)
     }
   };
@@ -89,12 +90,12 @@ export default function Registered(props) {
       },
 
       headers: { Authorization: `Bearer ${props.token}` }
-    }).then().catch(console.log);
-  }; 
+    }).then(() => props.setData([data2, tasks.filter(task => task.id !== id)])).catch(console.log);
+  };
 
-  
 
- 
+
+
   return (
     <>
       <main className="lg:col-span-9 xl:col-span-6">
@@ -113,12 +114,12 @@ export default function Registered(props) {
               ))}
             </select>
           </div>
-          <button onClick={handleChange} className="bg-lightBlue hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-            <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
+          <button onClick={handleChange} className="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-lightBlue hover:bg-gray-400">
+            <svg className="w-4 h-4 mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
             <span>New Task</span>
           </button>
           <div>
-            {isChecked ? <NewTask doRefresh={doRefresh} user={data2} token={token} /> : null}
+            {isChecked ? <NewTask doRefresh={doRefresh} setData={props.setData} user={data2} tasks={tasks} token={token} /> : null}
           </div>
           <div className="hidden sm:block">
             <nav className="flex divide-x rounded-lg shadow isolate divide-darkBlue bg-lightBlue" aria-label="Tabs">
@@ -147,13 +148,13 @@ export default function Registered(props) {
             </nav>
           </div>
         </div>
-        
+
         <div className="mt-4">
           <h1 className="sr-only">Upcoming Maintenance</h1>
           <ul role="list" className="space-y-4">
 
             {tasks.map((tasks) => (
-              <li key={tasks.id} className={!isOverdue(tasks)?"px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6":"px-4 py-6 bg-rose shadow sm:rounded-lg sm:p-6"}>
+              <li key={tasks.id} className={!isOverdue(tasks) ? "px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6" : "px-4 py-6 bg-rose shadow sm:rounded-lg sm:p-6"}>
                 <article aria-labelledby={'task-title-' + tasks.id}>
                   <div>
                     <div className="flex space-x-3">
@@ -161,7 +162,7 @@ export default function Registered(props) {
                         <WrenchScrewdriverIcon className="w-5 h-5" aria-hidden="true" />
                       </div>
                       <div className="flex-1 min-w-0">
-        
+
                         <p className="text-sm text-gray-500">
                           <a href={tasks.name} className="hover:underline">
                             <time dateTime={tasks.period_months}>Service Interval: {tasks.period_months}</time>
@@ -247,13 +248,13 @@ export default function Registered(props) {
                       className="mt-2 space-y-4 text-sm text-gray-700"
                       dangerouslySetInnerHTML={{ __html: tasks.description }}
                     /> : <p>No Data Available</p>}
-                    <button onClick={() => referToWikihow(tasks.name)}>DIY</button><br/>
+                    <button onClick={() => referToWikihow(tasks.name)}>DIY</button><br />
                     <button onClick={handleChangePros} >PRO</button>
                     <div>
-                      {isCheckedPros ? <Pros zip={data2.zip}  /> : null}
+                      {isCheckedPros ? <Pros zip={data2.zip} token={token} /> : null}
                     </div>
                   </div>
-                  
+
                 </article>
               </li>
             ))}

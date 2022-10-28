@@ -28,11 +28,11 @@ const useApi = (url) => {
   };
 
   useEffect(() => {
-    if(token == null) return;
+    if (token == null) return;
     fetchData();
-  }, [token, data]);
+  }, [token]);
 
-  return { data, isLoading };
+  return { data, setData, isLoading };
 }
 
 export default useApi;

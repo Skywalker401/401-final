@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Loader from "../Loader";
 
-export default function Pros(props){
-    const [pro, setPro] = useState();
-    const getPro = () => {
-        
+export default function Pros(props) {
+    const [pros, setPros] = useState();
+    const getPros = () => {
+
         const fetchData = () => {
             axios
                 .post('https://handy-dandy.azurewebsites.net/api/get-pros', { zip: props.zip }, { headers: { Authorization: `Bearer ${props.token}` } })
                 .then((res) => {
-                    setPro(res.data);
+                    setPros(res.data);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -19,12 +20,17 @@ export default function Pros(props){
         useEffect(() => {
             fetchData();
         }, []);
-        console.log(pro);
-        return pro
+        console.log(pros);
+
     }
-    console.log(getPro())
+    getPros()
+    console.log("PRO", pros)
     return (
-        <></>
+        <>
+            {pros
+                ? pros.map((pro, idx) => (<p id={idx}>{pro.name}</p>))
+                : <Loader />}
+        </>
     )
 
 }

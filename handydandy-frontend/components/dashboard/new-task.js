@@ -62,7 +62,7 @@ export default function NewTask(props) {
 
     return (
         <>
-            {user ? <div className="min-h-full">
+            {user && <div className="min-h-full">
                 <div className="py-10">
                     <div
                         className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
@@ -120,8 +120,8 @@ export default function NewTask(props) {
                 </div>
 
             </div>
-                :
-                <><AboutUs /> <Footer /></>
+                // :
+                // <><AboutUs /> <Footer /></>
             }
 
         </>

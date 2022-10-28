@@ -9,15 +9,21 @@ export default function Dashboard() {
     const { user } = useUser()
     const { token } = useToken()
     const { data, setData, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
-    console.log(data);
+
     if (isLoading && data === undefined) {
-        return <Loader />
+        return (
+            <div className="flex min-w-full place-content-center">
+                <Loader />
+            </div>)
     } else if (!isLoading && data === undefined) {
+
         return <Register user={user} token={token} />
     } else {
+
         return <Registered user={data} setData={setData} token={token} isLoading={isLoading} />
     }
 
 }
+
 
 

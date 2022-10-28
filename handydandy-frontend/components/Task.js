@@ -45,7 +45,7 @@ export default function Task(props) {
 
 
   return (
-    <article aria-labelledby={'task-title-' + props.tasks.id}>
+    <article aria-labelledby={'task-title-' + props.task.id}>
       <div>
         <div className="flex space-x-3">
           <div className="flex-shrink-0">
@@ -54,8 +54,8 @@ export default function Task(props) {
           <div className="flex-1 min-w-0">
 
             <p className="text-sm text-gray-500">
-              <a href={props.tasks.name} className="hover:underline">
-                <time dateTime={props.tasks.period_months}>Service Interval: {props.tasks.period_months}</time>
+              <a href={props.task.name} className="hover:underline">
+                <time dateTime={props.task.period_months}>Service Interval: {props.task.period_months}</time>
               </a>
             </p>
           </div>
@@ -120,7 +120,7 @@ export default function Task(props) {
                           )}
                         >
                           <TrashIcon className="w-5 h-5 mr-3 text-gray-400" aria-hidden="true" />
-                          <span onClick={() => deleteTask(props.tasks.id)}>Remove Task</span>
+                          <span onClick={() => deleteTask(props.task.id)}>Remove Task</span>
                         </a>
                       )}
                     </Menu.Item>
@@ -131,14 +131,14 @@ export default function Task(props) {
           </div>
         </div>
 
-        <h2 id={'question-title-' + props.tasks.id} className="mt-4 text-base font-medium text-gray-900">
-          {props.tasks.name}
+        <h2 id={'question-title-' + props.task.id} className="mt-4 text-base font-medium text-gray-900">
+          {props.task.name}
         </h2>
         {props.user ? <div
           className="mt-2 space-y-4 text-sm text-gray-700"
-          dangerouslySetInnerHTML={{ __html: props.tasks.description }}
+          dangerouslySetInnerHTML={{ __html: props.task.description }}
         /> : <p>No Data Available</p>}
-        <button onClick={() => referToWikihow(props.tasks.name)}>DIY</button><br />
+        <button onClick={() => referToWikihow(props.task.name)}>DIY</button><br />
         <button onClick={() => handleChangePros()} >PRO</button>
         <div>
           {isCheckedPros ? <Pros zip={props.data2.zip} token={props.token} /> : null}

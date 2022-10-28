@@ -9,29 +9,30 @@ export default function Home() {
     const { user } = useUser();
 
     return (
-        <>
+        <div>
 
+            {user ?
+                <> <NavBar />
+                    <div className="min-h-screen">
+                        <div className="py-10">
+                            <div
+                                className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
 
-            {user ? <> <NavBar />
-                <div className="min-h-full">
-                    <div className="py-10">
-                        <div
-                            className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
+                                <SideNav />
+                                <Dashboard />
 
-                            <SideNav />
-                            <Dashboard />
-
+                            </div>
                         </div>
                     </div>
-                </div>
-                <Footer />
-            </>
 
-                : <><NavBar /> <LandingPage /><Footer /></>
+                </>
+
+                : <><NavBar /> <LandingPage /></>
 
             }
 
+            <Footer />
+        </div>
 
-        </>
     )
 }

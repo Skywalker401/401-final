@@ -144,9 +144,9 @@ export default function Registered(props) {
           <h1 className="sr-only">Upcoming Maintenance</h1>
           <ul role="list" className="space-y-4">
 
-            {tasks.map((tasks) => (
-              <li key={tasks.id} className={!isOverdue(tasks) ? "px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6" : "px-4 py-6 bg-rose shadow sm:rounded-lg sm:p-6"}>
-                <Task tasks={tasks} data2={data2} token={token} user={props.user} setData={props.setData} />
+            {tasks.map((task) => (
+              <li key={task.id} className={!isOverdue(task) ? "px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6" : "px-4 py-6 bg-rose shadow sm:rounded-lg sm:p-6"}>
+                <Task task={task} tasks={tasks} data2={data2} token={token} user={props.user} setData={props.setData} />
               </li>
             ))}
           </ul>

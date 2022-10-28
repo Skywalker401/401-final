@@ -93,13 +93,13 @@ const footerNavigation = {
 export default function Footer() {
   return (
     <>
-      <footer className="fixed bottom-0 w-full bg-gray-50" aria-labelledby="footer-heading">
+      <footer className="bottom-0 w-full bg-gray-50" aria-labelledby="footer-heading">
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className="px-4 pt-16 pb-8 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:pt-24">
+        <div className="px-4 pb-8 mx-auto bg-gray-50 max-w-7xl sm:px-6 lg:px-8 lg:pt-24">
 
-          <div className="pt-8 mt-12 border-t border-gray-200 md:flex md:items-center md:justify-between lg:mt-16">
+          <div className="pt-8 border-t border-gray-200 md:flex md:items-center md:justify-between lg:mt-16">
             <div className="flex space-x-6 md:order-2">
               {footerNavigation.social.map((item) => (
                 <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
@@ -108,7 +108,7 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <p className="mt-8 text-base text-gray-400 md:order-1 md:mt-0">
+            <p className="text-base text-gray-400 md:order-1 md:mt-0">
               &copy; 2022 HandyDandy, Inc. All rights reserved.
             </p>
           </div>

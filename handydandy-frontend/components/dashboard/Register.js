@@ -91,13 +91,14 @@ export default function Register(props) {
         <div className="flex">
             <input className="lg" type="checkbox" name="pro" defaultChecked={false} checked={isChecked} onChange={checkHandler} />
             {
-                isChecked ? <Comps handleComps={handleComps} /> : null    
-            }    
+                isChecked ? <Comps handleComps={handleComps} /> : null
+            }
         </div>
-            
+
         <button className="">Register</button>
       </form>
     );
   }
+
 
     

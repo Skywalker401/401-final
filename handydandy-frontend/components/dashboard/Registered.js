@@ -90,7 +90,7 @@ export default function Registered(props) {
       <main className="flex-grow lg:col-span-9 xl:col-span-6">
         <div className="px-4 sm:px-0">
           <div className="sm:hidden">
-            <label htmlFor="question-tabs" className="sr-only">
+            <label htmlFor="task-tabs" className="sr-only">
               Select a tab
             </label>
             <select
@@ -143,6 +143,7 @@ export default function Registered(props) {
         <div className="mt-4">
           <h1 className="sr-only">Upcoming Maintenance</h1>
           <ul role="list" className="space-y-4">
+
 
             {tasks.map((task) => (
               <li key={task.id} className={!isOverdue(task) ? "px-4 py-6 bg-white shadow sm:rounded-lg sm:p-6" : "px-4 py-6 bg-rose shadow sm:rounded-lg sm:p-6"}>

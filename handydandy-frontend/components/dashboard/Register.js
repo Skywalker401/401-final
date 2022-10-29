@@ -76,8 +76,52 @@ export default function Register(props) {
     };  
 
     return (
+      <>  
+        <form className="border border-black rounded-lg bg-gradient-to-r from-lightBlue to-white col-span-2 p-2 shadow-lg" onSubmit={handleSubmit}>
+          <h1 className="text-2xl font-semibold text-center">Register Form</h1>
+          <div className="flex flex-col">
+            <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="name">Name</label>
+            <input className=" rounded p-1" type="text" name="name" onChange={handleChange} />
+          </div>
+          <div className="flex flex-col">
+          <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="email">Email</label>
+          <input className="rounded p-1" type="email" name="email" onChange={handleChange} />
+          </div>
+          <div className="flex flex-col">
+          <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="address">Address</label>
+          <input className="rounded p-1" type="text" name="address" onChange={handleChange} />
+          </div>
+          <div className="flex flex-col">
+          <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="city">City</label>
+          <input className="rounded p-1" type="text" name="city" onChange={handleChange} />
+          </div>
+          <div className="flex flex-col">
+          <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="zip">Zip</label>
+          <input className="rounded p-1" type="text" name="zip" onChange={handleChange} />
+          </div>
+          <div className="flex flex-col">
+            <div className="flex flex-col">
+              <label className=" mb-2 tracking-wide text-gray-700 uppercase" htmlFor="pro">Pro: </label>
+            </div>
+            <div className="flex">
+              <input className="lg rounded mb-2" type="checkbox" name="pro" defaultChecked={false} checked={isChecked} onChange={checkHandler} />
+              {
+                isChecked ? <Comps handleComps={handleComps} /> : null
+              }
+            </div>
+          </div>
+          <div className="flex justify-center mt-4">
+            <button className=" inline-flex rounded-md border border-transparent bg-gradient-to-r from-darkBlue to-lightBlue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm">Register</button>
+          </div>
+        </form>
+      </>
 
-      <form className="border border-black rounded-lg bg-gradient-to-r from-lightBlue to-white col-span-3 p-3 shadow-lg" onSubmit={handleSubmit}>
+    );
+  }
+
+
+
+{/* <form className="border border-black rounded-lg bg-gradient-to-r from-lightBlue to-white col-span-3 p-3 shadow-lg" onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input className="rounded p-1 m-2"   type="text" name="name" onChange={handleChange} />
         <label htmlFor="email">Email</label>
@@ -97,10 +141,4 @@ export default function Register(props) {
         </div>
 
         <button className="inline-flex rounded-md  border-transparent bg-gradient-to-r from-lightGray to-white bg-origin-border px-4 py-2 text-base font-medium text-black shadow-inner shadow-lg">Register</button>
-      </form>
-
-    );
-  }
-
-
-    
+      </form> */}

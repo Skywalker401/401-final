@@ -16,7 +16,7 @@ export default function Home() {
                     <div className="min-h-screen">
                         <div className="py-10">
                             <div
-                                className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
+                                className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-6 lg:gap-8 lg:px-8">
 
                                 <SideNav />
                                 <Dashboard />

@@ -53,7 +53,7 @@ import brendon from "../img/brendon.jpg"
     href: '#',
     src: sergii,
     imageAlt: 'Sergii',
-    about: 'Hi, I am a Software Developer',
+    about: 'My name is Sergii Otryshko and I\'m a software engineer who enjoys taking on challenges and finding solutions that prioritize efficiency and user experience. I have a background in law, telecommunications and customer service and I\'m looking to bring my various work experiences to my new career to approach problems from non-standard angles.',
     linkedIn:"https://www.linkedin.com/in/sergii-otryshko/",
     GitHub:"https://github.com/S14mx"
   },

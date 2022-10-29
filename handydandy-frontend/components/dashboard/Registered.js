@@ -1,21 +1,5 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useState } from 'react';
 import NewTask from './new-task.js';
-import Pros from './Pros.js';
-import { Fragment } from 'react'
-import { Menu, Popover, Transition } from '@headlessui/react'
-import { useUser } from '@auth0/nextjs-auth0';
-import referToWikihow from '../../utils/referToWikihow.js';
-import useApi from '../../hooks/useApi';
-import axios from 'axios';
-import {
-  EllipsisVerticalIcon,
-  WrenchScrewdriverIcon,
-  ArrowPathIcon,
-  TrashIcon,
-  CheckCircleIcon,
-
-
-} from '@heroicons/react/20/solid'
 import Task from '../Task.js';
 
 
@@ -44,12 +28,12 @@ function isOverdue(task) {
 
 
 export default function Registered(props) {
-  // const { data, isLoading } = useApi('https://handy-dandy.azurewebsites.net/api/get-user')
+
   const tasks = props.user[1];
   const data2 = props.user[0]
   const token = props.token;
   const [isChecked, setIsChecked] = useState(false);
-  // const [isCheckedPros, setIsCheckedPros] = useState(false);
+
 
 
 
@@ -71,7 +55,7 @@ export default function Registered(props) {
             </label>
             <select
               id="task-tabs"
-              className="block w-full text-base font-medium  rounded-md shadow-sm focus:border-darkBlue focus:ring-darkBlue"
+              className="block w-full text-base font-medium rounded-md shadow-sm focus:border-darkBlue focus:ring-darkBlue"
               defaultValue={tabs.find((tab) => tab.current).name}
             >
               {tabs.map((tab) => (

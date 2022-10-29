@@ -43,6 +43,16 @@ export default function Task(props) {
     }).then(() => props.setData([props.data2, props.tasks.filter(task => task.id !== id)])).catch(console.log);
   };
 
+  const getDueDate = (last_performed, period_months) => {
+    const last_d = new Date(last_performed)
+    const next_performed = new Date(last_d.getTime() + period_months * 2629800000)
+    let next_date = next_performed.getDate();
+    let next_month = next_performed.getMonth() + 1;
+    let next_year = next_performed.getFullYear();
+    let next = next_year + "-" + next_month + "-" + next_date;
+    return next
+  }
+
 
   return (
     <article aria-labelledby={'task-title-' + props.task.id}>
@@ -54,9 +64,10 @@ export default function Task(props) {
           <div className="flex-1 min-w-0">
 
             <p className="text-sm text-gray-500">
-              <a href={props.task.name} className="hover:underline">
+              <a href="" className="hover:underline">
                 <time dateTime={props.task.period_months}>Service Interval: {props.task.period_months} months</time>
               </a>
+              <p className="text-sm text-gray-500">Due Date: {getDueDate(props.task.last_performed, props.task.period_months)}</p>
             </p>
           </div>
           <div className="flex self-center flex-shrink-0">

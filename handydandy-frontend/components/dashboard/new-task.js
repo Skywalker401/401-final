@@ -1,9 +1,5 @@
 import { useState } from "react";
-import AboutUs from "../AboutUs";
-import SideNav from "../SideNav";
 import { useUser } from "@auth0/nextjs-auth0";
-import NavBar from "../NavBar";
-import Footer from "../Footer";
 import axios from "axios";
 
 export default function NewTask(props) {

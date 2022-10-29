@@ -55,7 +55,7 @@ export default function Task(props) {
 
             <p className="text-sm text-gray-500">
               <a href={props.task.name} className="hover:underline">
-                <time dateTime={props.task.period_months}>Service Interval: {props.task.period_months}</time>
+                <time dateTime={props.task.period_months}>Service Interval: {props.task.period_months} months</time>
               </a>
             </p>
           </div>
@@ -131,17 +131,30 @@ export default function Task(props) {
           </div>
         </div>
 
-        <h2 id={'question-title-' + props.task.id} className="mt-4 text-base font-medium text-gray-900">
+        <h2 id={'question-title-' + props.task.id} className="mt-4 text-2xl font-medium text-center text-gray-900">
           {props.task.name}
         </h2>
+        <p className="my-2 text-xs italic text-center text-gray-600">Category: {props.task.category}</p>
         {props.user ? <div
-          className="mt-2 space-y-4 text-sm text-gray-700"
+          className="mt-2 space-y-4 text-sm text-center text-gray-700"
           dangerouslySetInnerHTML={{ __html: props.task.description }}
         /> : <p>No Data Available</p>}
-        <button onClick={() => referToWikihow(props.task.name)}>DIY</button><br />
-        <button onClick={() => handleChangePros()} >PRO</button>
+        <div className="flex justify-between mt-4">
+          <button onClick={() => handleChangePros()}
+            type="button"
+            className="inline-flex px-4 py-2 text-base font-semibold text-white border border-transparent rounded-md shadow-sm bg-gradient-to-r from-darkBlue to-lightBlue bg-origin-border"
+          >
+            PRO
+          </button>
+          <button onClick={() => referToWikihow(props.task.name)}
+            type="button"
+            className="inline-flex px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-gradient-to-r from-darkBlue to-lightBlue bg-origin-border"
+          >
+            DIY
+          </button>
+        </div>
         <div>
-          {isCheckedPros ? <Pros zip={props.data2.zip} token={props.token} /> : null}
+          {isCheckedPros ? <Pros zip={props.data2.zip} token={props.token} task={props.task} /> : null}
         </div>
       </div>
 

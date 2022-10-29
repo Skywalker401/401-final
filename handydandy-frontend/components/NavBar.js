@@ -14,6 +14,7 @@ const navigation = [
   { name: 'Project Ideas', href: '/project-ideas', icon: LightBulbIcon, current: false },
   { name: 'About Us', href: '/about', icon: UserGroupIcon, current: false },
   { name: 'Contact Us', href: '/contactUs', icon: EnvelopeOpenIcon, current: false },
+  { name: 'Your Profile', href: '/urProf', icon: EnvelopeOpenIcon, current: false },
 ]
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -22,7 +23,7 @@ function classNames(...classes) {
 
 
 const userNavigation = [
-  { name: 'Your Profile', href: '/profile' },
+  { name: 'Your Profile', href: '/urProf' },
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: "/api/auth/logout" },
   { name: 'Contact', href: "/contactUs" },

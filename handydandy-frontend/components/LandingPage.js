@@ -155,7 +155,7 @@ export default function LandingPage() {
                     <div className="mt-6">
                       <a
                         href="/api/auth/login"
-                        className="inline-flex rounded-md border border-transparent bg-gradient-to-r from-darkBlue to-lightBlue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-purple-700 hover:to-indigo-700"
+                        className="inline-flex rounded-md border border-transparent bg-gradient-to-r from-darkBlue to-lightBlue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm "
                       >
                         Get started
                       </a>

@@ -76,27 +76,29 @@ export default function Register(props) {
     };  
 
     return (
-      <form className="" onSubmit={handleSubmit}>
+
+      <form className="border border-black rounded-lg bg-gradient-to-r from-lightBlue to-white col-span-3 p-3 shadow-lg" onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
-        <input type="text" name="name" onChange={handleChange} />
+        <input className="rounded p-1 m-2"   type="text" name="name" onChange={handleChange} />
         <label htmlFor="email">Email</label>
-        <input type="email" name="email" onChange={handleChange} />
-        <label htmlFor="address">Address</label>
-        <input type="text" name="address" onChange={handleChange} />
+        <input className="rounded p-1 m-3" type="email" name="email" onChange={handleChange} />
+        <label htmlFor="address">Addr</label>
+        <input className="rounded p-1 m-4" type="text" name="address" onChange={handleChange} />
         <label htmlFor="city">City</label>
-        <input type="text" name="city" onChange={handleChange} />
-        <label htmlFor="zip">Zipcode</label>
-        <input type="text" name="zip" onChange={handleChange} />
+        <input className="rounded p-1 m-5" type="text" name="city" onChange={handleChange} />
+        <label htmlFor="zip">Zip</label>
+        <input className="rounded p-1 ml-6 mb-2" type="text" name="zip" onChange={handleChange} />
         <label htmlFor="pro">Pro: </label>
         <div className="flex">
-            <input className="lg" type="checkbox" name="pro" defaultChecked={false} checked={isChecked} onChange={checkHandler} />
+            <input className="lg rounded mb-2" type="checkbox" name="pro" defaultChecked={false} checked={isChecked} onChange={checkHandler} />
             {
                 isChecked ? <Comps handleComps={handleComps} /> : null
             }
         </div>
 
-        <button className="">Register</button>
+        <button className="inline-flex rounded-md  border-transparent bg-gradient-to-r from-lightGray to-white bg-origin-border px-4 py-2 text-base font-medium text-black shadow-inner shadow-lg">Register</button>
       </form>
+
     );
   }
 

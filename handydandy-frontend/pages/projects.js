@@ -3,8 +3,10 @@ import SideNav from "../components/SideNav";
 import {useUser} from "@auth0/nextjs-auth0";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import ProjectIdeas from "../components/ProjectIdeas";
 
-export default function ProjectIdeas() {
+
+export default function Projects() {
     const {user} = useUser();
     return (
         <>
@@ -15,7 +17,7 @@ export default function ProjectIdeas() {
                         className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
                         <SideNav />
                         <div className="col-span-9">
-                            <h1>Project Ideas Coming Soon!!</h1>
+                            <ProjectIdeas/>
                         </div>
                     </div>
                 </div>

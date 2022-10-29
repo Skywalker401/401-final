@@ -61,30 +61,6 @@ export default function Registered(props) {
     }
   };
 
-
-  // const handleChangePros = () => {
-  //   if (isCheckedPros) {
-  //     setIsCheckedPros(false)
-  //   } else {
-  //     setIsCheckedPros(true)
-  //   }
-  // };
-
-  // const deleteTask = (id) => {
-  //   axios({
-  //     method: 'post',
-  //     url: 'https://handy-dandy.azurewebsites.net/api/delete-task',
-  //     data: {
-  //       id: id
-  //     },
-
-  //     headers: { Authorization: `Bearer ${props.token}` }
-  //   }).then(() => props.setData([data2, tasks.filter(task => task.id !== id)])).catch(console.log);
-  // };
-
-
-
-
   return (
     <>
       <main className="flex-grow lg:col-span-9 xl:col-span-6">
@@ -95,7 +71,7 @@ export default function Registered(props) {
             </label>
             <select
               id="task-tabs"
-              className="block w-full text-base font-medium text-gray-900 border-gray-300 rounded-md shadow-sm focus:border-darkBlue focus:ring-darkBlue"
+              className="block w-full text-base font-medium  rounded-md shadow-sm focus:border-darkBlue focus:ring-darkBlue"
               defaultValue={tabs.find((tab) => tab.current).name}
             >
               {tabs.map((tab) => (

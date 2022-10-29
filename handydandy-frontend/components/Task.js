@@ -63,17 +63,17 @@ export default function Task(props) {
           </div>
           <div className="flex-1 min-w-0">
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm ">
               <a href="" className="hover:underline">
                 <time dateTime={props.task.period_months}>Service Interval: {props.task.period_months} months</time>
               </a>
-              <p className="text-sm text-gray-500">Due Date: {getDueDate(props.task.last_performed, props.task.period_months)}</p>
+              <p className="text-sm ">Due Date: {getDueDate(props.task.last_performed, props.task.period_months)}</p>
             </p>
           </div>
           <div className="flex self-center flex-shrink-0">
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="flex items-center p-2 -m-2 text-gray-400 rounded-full hover:text-gray-600">
+                <Menu.Button className="flex items-center p-2 -m-2 text-gray-400 rounded-full">
                   <span className="sr-only">Open options</span>
                   <EllipsisVerticalIcon className="w-5 h-5" aria-hidden="true" />
                 </Menu.Button>
@@ -95,11 +95,11 @@ export default function Task(props) {
                         <a
                           href="#"
                           className={classNames(
-                            active ? 'bg-red-100 text-gray-900' : 'text-gray-700',
+                            active ? 'bg-red-100 text-black' : 'text-black',
                             'flex px-4 py-2 text-sm'
                           )}
                         >
-                          <ArrowPathIcon className="w-5 h-5 mr-3 text-gray-400" aria-hidden="true" />
+                          <ArrowPathIcon className="w-5 h-5 mr-3" aria-hidden="true" />
                           <span>Update Task</span>
                         </a>
                       )}
@@ -109,12 +109,12 @@ export default function Task(props) {
                         <a
                           href="#"
                           className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                            active ? 'bg-gray-100 text-black' : 'text-black',
                             'flex px-4 py-2 text-sm'
                           )}
                         >
                           <CheckCircleIcon
-                            className="w-5 h-5 mr-3 text-gray-400"
+                            className="w-5 h-5 mr-3 text-black"
                             aria-hidden="true"
                           />
                           <span>Mark Complete</span>
@@ -126,11 +126,11 @@ export default function Task(props) {
                         <a
                           href="#"
                           className={classNames(
-                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                            active ? 'bg-gray-100 text-black' : 'text-black',
                             'flex px-4 py-2 text-sm'
                           )}
                         >
-                          <TrashIcon className="w-5 h-5 mr-3 text-gray-400" aria-hidden="true" />
+                          <TrashIcon className="w-5 h-5 mr-3 text-black" aria-hidden="true" />
                           <span onClick={() => deleteTask(props.task.id)}>Remove Task</span>
                         </a>
                       )}
@@ -142,12 +142,12 @@ export default function Task(props) {
           </div>
         </div>
 
-        <h2 id={'question-title-' + props.task.id} className="mt-4 text-2xl font-medium text-center text-gray-900">
+        <h2 id={'question-title-' + props.task.id} className="mt-4 text-2xl font-medium text-center ">
           {props.task.name}
         </h2>
-        <p className="my-2 text-xs italic text-center text-gray-600">Category: {props.task.category}</p>
+        <p className="my-2 text-xs italic text-center ">Category: {props.task.category}</p>
         {props.user ? <div
-          className="mt-2 space-y-4 text-sm text-center text-gray-700"
+          className="mt-2 space-y-4 text-sm text-center "
           dangerouslySetInnerHTML={{ __html: props.task.description }}
         /> : <p>No Data Available</p>}
         <div className="flex justify-between mt-4">

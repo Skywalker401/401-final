@@ -71,16 +71,16 @@ export default function NewTask(props) {
                                         <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-first-name">
                                             Task Name
                                         </label>
-                                        <input name="name" onChange={handleChange} className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-red-500 rounded appearance-none focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Task Name" />
+                                        <input name="name" onChange={handleChange} className="block w-full px-4 py-3 mb-3 leading-tight  border  rounded appearance-none focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Task Name" />
                                         <p className="text-xs italic text-red-500">Please fill out Name for the Task.</p>
                                     </div>
                                 </div>
                                 <div className="flex flex-wrap mb-6 -mx-3">
                                     <div className="w-full px-3">
-                                        <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-password">
+                                        <label className="block mb-2 text-xs font-bold tracking-wide  uppercase" htmlFor="grid-password">
                                             Description
                                         </label>
-                                        <input name="description" onChange={handleChange} className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="Description" />
+                                        <input name="description" onChange={handleChange} className="block w-full px-4 py-3 mb-3 leading-tight  border  rounded appearance-none focus:outline-none focus:bg-white" id="grid-password" type="text" placeholder="Description" />
                                         <p className="text-xs italic text-gray-600">Please Add a Description for the Task</p>
                                     </div>
                                 </div>
@@ -89,22 +89,22 @@ export default function NewTask(props) {
                                         <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-city">
                                             Maintenance period (months)
                                         </label>
-                                        <input name="period_months" onChange={handleChange} className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="number" step="1" placeholder="6" />
+                                        <input name="period_months" onChange={handleChange} className="block w-full px-4 py-3 leading-tight  border  rounded appearance-none focus:outline-none focus:bg-white" id="grid-city" type="number" step="1" placeholder="6" />
                                         <p className="text-xs italic text-gray-600">Scheduled Routine Maintenance </p>
                                     </div>
                                     <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                                         <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-city">
                                             Last performed (months ago)
                                         </label>
-                                        <input name="months_ago" onChange={handleChange} className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="number" step="1" placeholder="6" />
+                                        <input name="months_ago" onChange={handleChange} className="block w-full px-4 py-3 leading-tight border  rounded appearance-none focus:outline-none focus:bg-white" id="grid-city" type="number" step="1" placeholder="6" />
                                         <p className="text-xs italic text-gray-600">Scheduled Routine Maintenance </p>
                                     </div>
                                     <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
-                                        <label className="block mb-6 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-state">
+                                        <label className="block mb-6 text-xs font-bold tracking-wide uppercase" htmlFor="grid-state">
                                             Category
                                         </label>
                                         <div className="relative">
-                                            <select defaultValue="" name="category" onChange={handleChange} className="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                            <select defaultValue="" name="category" onChange={handleChange} className="block w-full px-4 py-3 pr-8 leading-tight  border  rounded appearance-none focus:outline-none focus:bg-white " id="grid-state">
                                                 <option value="" disabled></option>
                                                 <option name='hvac' value='hvac'>Hvac</option>
                                                 <option name='electrical' value='electrical'>Electrical</option>
@@ -112,7 +112,7 @@ export default function NewTask(props) {
                                                 <option name='plumbing' value='plumbing'>Plumbing</option>
                                             </select>
                                             <p className="text-xs italic text-gray-600">Selection can't be blank</p>
-                                            <div className="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                            <div className="absolute inset-y-0 right-0 flex items-center px-2  pointer-events-none">
                                                 <svg className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                                             </div>
                                         </div>

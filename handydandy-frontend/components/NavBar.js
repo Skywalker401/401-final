@@ -67,8 +67,8 @@ export default function NavBar() {
                       </div>
                     </div>
                     <div className="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
-                      {/* Mobile menu button */}
-                      <Popover.Button className="inline-flex items-center justify-center p-2 -mx-2 text-gray-400 rounded-md hover:bg-white hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-darkBlue">
+
+                      <Popover.Button className="inline-flex items-center justify-center p-2 -mx-2 rounded-md hover:bg-white  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-darkBlue">
                         <span className="sr-only">Open menu</span>
                         {open ? (
                           <XMarkIcon className="block w-6 h-6" aria-hidden="true" />
@@ -89,7 +89,7 @@ export default function NavBar() {
 
                       </a>
 
-                      {/* Profile dropdown */}
+
                       {user ? <Menu as="div" className="relative flex-shrink-0 ml-5">
                         <div>
                           <Menu.Button className="flex bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2">
@@ -113,7 +113,7 @@ export default function NavBar() {
                                   <a
                                     href={item.href}
                                     className={classNames(
-                                      active ? 'bg-gray-100' : '',
+                                      active ? 'bg-lightGray' : '',
                                       'block py-2 px-4 text-sm text-gray-700'
                                     )}
                                   >

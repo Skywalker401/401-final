@@ -64,7 +64,7 @@ export default function Registered(props) {
             </select>
           </div>
           <div className="flex justify-center mb-10">
-            <button onClick={handleChange} className="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-lightBlue hover:bg-gray-400">
+            <button onClick={handleChange} className="inline-flex items-center px-4 py-2 font-bold  rounded bg-lightBlue ">
               <svg className="w-4 h-4 mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
               <span>New Task</span>
             </button>

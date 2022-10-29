@@ -80,28 +80,28 @@ export default function Register(props) {
         <form className="border border-black rounded-lg bg-gradient-to-r from-lightBlue to-white col-span-2 p-2 shadow-lg" onSubmit={handleSubmit}>
           <h1 className="text-2xl font-semibold text-center">Register Form</h1>
           <div className="flex flex-col">
-            <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="name">Name</label>
+            <label className=" text-center mb-2 text-sm  tracking-wide" htmlFor="name">Name</label>
             <input className=" rounded p-1" type="text" name="name" onChange={handleChange} />
           </div>
           <div className="flex flex-col">
-          <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="email">Email</label>
+          <label className=" text-center mb-2 text-sm  tracking-wide " htmlFor="email">Email</label>
           <input className="rounded p-1" type="email" name="email" onChange={handleChange} />
           </div>
           <div className="flex flex-col">
-          <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="address">Address</label>
+          <label className=" text-center mb-2 text-sm  tracking-wide " htmlFor="address">Address</label>
           <input className="rounded p-1" type="text" name="address" onChange={handleChange} />
           </div>
           <div className="flex flex-col">
-          <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="city">City</label>
+          <label className=" text-center mb-2 text-sm  tracking-wide " htmlFor="city">City</label>
           <input className="rounded p-1" type="text" name="city" onChange={handleChange} />
           </div>
           <div className="flex flex-col">
-          <label className=" text-center mb-2 text-sm  tracking-wide text-gray-700 uppercase" htmlFor="zip">Zip</label>
+          <label className=" text-center mb-2 text-sm  tracking-wide " htmlFor="zip">Zip</label>
           <input className="rounded p-1" type="text" name="zip" onChange={handleChange} />
           </div>
           <div className="flex flex-col">
             <div className="flex flex-col">
-              <label className=" mb-2 tracking-wide text-gray-700 uppercase" htmlFor="pro">Pro: </label>
+              <label className=" mb-2 tracking-wide " htmlFor="pro">Pro: </label>
             </div>
             <div className="flex">
               <input className="lg rounded mb-2" type="checkbox" name="pro" defaultChecked={false} checked={isChecked} onChange={checkHandler} />
@@ -121,24 +121,3 @@ export default function Register(props) {
 
 
 
-{/* <form className="border border-black rounded-lg bg-gradient-to-r from-lightBlue to-white col-span-3 p-3 shadow-lg" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input className="rounded p-1 m-2"   type="text" name="name" onChange={handleChange} />
-        <label htmlFor="email">Email</label>
-        <input className="rounded p-1 m-3" type="email" name="email" onChange={handleChange} />
-        <label htmlFor="address">Addr</label>
-        <input className="rounded p-1 m-4" type="text" name="address" onChange={handleChange} />
-        <label htmlFor="city">City</label>
-        <input className="rounded p-1 m-5" type="text" name="city" onChange={handleChange} />
-        <label htmlFor="zip">Zip</label>
-        <input className="rounded p-1 ml-6 mb-2" type="text" name="zip" onChange={handleChange} />
-        <label htmlFor="pro">Pro: </label>
-        <div className="flex">
-            <input className="lg rounded mb-2" type="checkbox" name="pro" defaultChecked={false} checked={isChecked} onChange={checkHandler} />
-            {
-                isChecked ? <Comps handleComps={handleComps} /> : null
-            }
-        </div>
-
-        <button className="inline-flex rounded-md  border-transparent bg-gradient-to-r from-lightGray to-white bg-origin-border px-4 py-2 text-base font-medium text-black shadow-inner shadow-lg">Register</button>
-      </form> */}

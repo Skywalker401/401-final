@@ -3,7 +3,7 @@ import SideNav from "../components/SideNav";
 import {useUser} from "@auth0/nextjs-auth0";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import Contact from "../components/Contact";
+
 import YourProf from "../components/Prof";
 
 export default function ContactUs(){

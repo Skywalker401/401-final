@@ -23,7 +23,7 @@ import brendon from "../img/brendon.jpg"
     href: '#',
     src: brendon,
     imageAlt: 'Brendon',
-    about: 'My name is Brendon and I’ll be honest, I didn’t plan on a Career in Web Development. at first, I coded because I enjoyed it, then I realized that if I want to make something serious out of it, I need to learn the industry and practices. So here I am.',
+    about: 'My name is Brendon and I’ll be honest, I didn’t plan on a Career in Web Development. At first, I coded because I enjoyed it, then I realized that if I want to make something serious out of it, I need to learn the industry and practices. So here I am.',
     linkedIn:"https://www.linkedin.com/in/brendon-hampton-37132899/",
     GitHub:"https://github.com/BrendonLH"
   },
@@ -33,7 +33,7 @@ import brendon from "../img/brendon.jpg"
     href: '#',
     src: brian,
     imageAlt: 'Brian',
-    about: 'Hi, I am a Software Developer',
+    about: 'My name is Brian and I am a Software Developer with a background in Supply Chain Leadership. My dream is to work with a team that helps spacecraft navigate the stars.',
     linkedIn:"https://www.linkedin.com/in/brianjtarte/",
     GitHub:"https://github.com/brianjtarte"
   },
@@ -88,26 +88,3 @@ export default function AboutUs() {
   )
 }
 
-//  {/* <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-4 ">
-//     {team.map((team) =>(
-//             <div className="flex flex-wrap -mx-1 lg:-mx-4">
-//       <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-full">
-//         <article className="overflow-auto rounded-lg shadow-lg h-3/4 p-1">
-//           <a href={team.href}>
-//             <Image  src={team.src} alt={team.imageAlt} className="block h-auto w-full"/>
-//           </a>
-//           <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-//             <h1 className="text-lg text-block">
-//               <a className="no-underline hover:underline text-black" href="#">
-//                 {team.name}
-//               </a>
-//             </h1>
-//           </header>
-//           <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-//               <p> {team.about} </p>
-//           </footer>
-//         </article>
-//       </div>
-//     </div>
-//     ))}
-// </div> */}

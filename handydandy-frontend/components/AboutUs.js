@@ -13,7 +13,7 @@ import brendon from "../img/brendon.jpg"
     href: '#',
     src: aoife,
     imageAlt: 'Aoife',
-    about: 'Hi, I am a Software Developer',
+    about: 'I\'m Aoife Mulligan and I\'m a software developer. I\'m a Passionate worker with a strong strong background in the sciences, specifically microbiology, biotech, bioinformatics, and also in art. I am a creative problem solver and a team player who is skilled at contributing to and helping coordinate group efforts. In my free time she enjoys cooking, painting, playing video games, and playing with my two dogs.',
     linkedIn:"https://www.linkedin.com/in/aoife-mulligan-b3a821220/",
     GitHub:"https://github.com/AoifeWM"
   },

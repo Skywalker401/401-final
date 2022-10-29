@@ -6,7 +6,7 @@ import logo from '../img/handydandylogo.svg';
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 import { EnvelopeOpenIcon, LightBulbIcon } from "@heroicons/react/20/solid";
-import LandingPage from "./LandingPage";
+
 
 
 const navigation = [
@@ -61,10 +61,9 @@ export default function NavBar() {
                         </a>
                       </div>
                     </div>
-                    <div className="flex-1 min-w-0 md:px-8 lg:px-0 xl:col-span-6
-                    ">
-                      <div className="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-                        <h1 className="block text-black p-3 pl-40 pb-10">Handy Dandy</h1>
+                    <div className="flex-1 min-w-0 md:px-8 lg:px-0 xl:col-span-6 ">
+                      <div className="text-4xl font-bold tracking-tight text-center sm:text-5xl lg:text-6xl">
+                        <h1 className="block p-3 pb-10 pl-40 text-black">Handy Dandy</h1>
                       </div>
                     </div>
                     <div className="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
@@ -125,7 +124,7 @@ export default function NavBar() {
                             ))}
                           </Menu.Items>
                         </Transition>
-                      </Menu> : <a href="/api/auth/login" className="inline-flex rounded-md border border-transparent bg-gradient-to-r from-darkBlue to-lightBlue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm">Login</a>}
+                      </Menu> : <a href="/api/auth/login" className="inline-flex px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-gradient-to-r from-darkBlue to-lightBlue bg-origin-border">Login</a>}
 
 
                     </div>

@@ -17,36 +17,36 @@ export default function NewTask(props) {
         description: "",
         period_months: "",
         months_ago: 0,
-})
+    })
 
 
 
-const handleChange = (event) => {
-    setTask({ ...task, [event.target.name]: event.target.value });
-};
+    const handleChange = (event) => {
+        setTask({ ...task, [event.target.name]: event.target.value });
+    };
 
-//  handle the request
-const handleSubmit = () => {
-    let d = new Date();
-    let last_d = new Date(d- task.months_ago *2629800000 )
-    console.log(d, last_d)
-    let curr_date = last_d.getDate();
-    let curr_month = last_d.getMonth() + 1;
-    let curr_year = last_d.getFullYear();
-    let last = curr_year + "-" + curr_month + "-" + curr_date;
-    props.setIsChecked(false)
-    parseFloat(task.period_months);
-    axios({
-        method: 'post',
-        url: 'https://handy-dandy.azurewebsites.net/api/create-task',
-        data: {
-            owner: task.owner,
-            name: task.name,
-            category: task.category,
-            description: task.description,
-            period_months: task.period_months,
-            last_performed: last
-        },
+    //  handle the request
+    const handleSubmit = () => {
+        let d = new Date();
+        let last_d = new Date(d - task.months_ago * 2629800000)
+        console.log(d, last_d)
+        let curr_date = last_d.getDate();
+        let curr_month = last_d.getMonth() + 1;
+        let curr_year = last_d.getFullYear();
+        let last = curr_year + "-" + curr_month + "-" + curr_date;
+        props.setIsChecked(false)
+        parseFloat(task.period_months);
+        axios({
+            method: 'post',
+            url: 'https://handy-dandy.azurewebsites.net/api/create-task',
+            data: {
+                owner: task.owner,
+                name: task.name,
+                category: task.category,
+                description: task.description,
+                period_months: task.period_months,
+                last_performed: last
+            },
 
             headers: { Authorization: `Bearer ${props.token}` }
         })
@@ -104,7 +104,7 @@ const handleSubmit = () => {
                                         <p className="text-xs italic text-gray-600">Scheduled Routine Maintenance </p>
                                     </div>
                                     <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
-                                        <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-state">
+                                        <label className="block mb-6 text-xs font-bold tracking-wide text-gray-700 uppercase" htmlFor="grid-state">
                                             Category
                                         </label>
                                         <div className="relative">

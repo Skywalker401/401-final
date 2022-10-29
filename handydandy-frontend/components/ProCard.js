@@ -9,13 +9,13 @@ export default function ProCard(props) {
         </div>
         <div>
           <h2 className="text-2xl font-semibold text-center text-gray-800">{props.pro.name}</h2>
-          <p className="mt-2 mb-2 text-gray-600">Proficient in:</p>
+          <p className="mt-2 mb-2 text-gray-600">Proficient in</p>
           {Object.entries(props.pro.competencies).filter(competency => competency.includes(true)).map(competency2 => <p className="font-semibold uppercase">{competency2}</p>)}
         </div>
         <div className="flex justify-end mt-4">
-          <a href="#" className="text-xl font-medium text-indigo-500">{props.pro.email}</a>
+          <a href={`mailto:${props.pro.email}`} className="text-xl font-medium text-indigo-500">{props.pro.email}</a>
         </div>
       </div>
-    </div>
+    </div >
   )
 }

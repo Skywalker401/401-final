@@ -8,6 +8,7 @@ export default function Pros(props) {
     const { user } = useUser()
     const user_id = user.sub.split("|")[1]
     const [pros, setPros] = useState();
+    const [isLoading, setIsLoading] = useState(true)
     const getPros = () => {
 
         const fetchData = () => {
@@ -18,24 +19,49 @@ export default function Pros(props) {
                 })
                 .catch((err) => {
                     console.log(err);
-                })
+                }).then(() => {
+                    setIsLoading(false);
+                });
         }
 
         useEffect(() => {
             fetchData();
         }, []);
-        console.log(pros);
 
     }
     getPros()
-    console.log("PRO", pros)
-    return (
-        <>
 
-            {pros
-                ? pros.filter(pro => pro.sid !== user_id && pro.competencies[`${props.task.category}`] === true).map((pro, idx) => (<ProCard id={idx} pro={pro} />))
-                : <Loader />}
-        </>
-    )
+
+    if (isLoading && pros === undefined) {
+        return (
+
+            <Loader />
+        )
+
+    } else if ((!isLoading && pros === undefined)) {
+
+        return (
+            <div className="flex justify-center">
+                <p>No pros found in your area</p>
+            </div>
+        )
+    } else {
+
+        return (
+            <>
+                {(pros.length === 1) && (pros[0].sid === user_id)
+
+                    ?
+                    <div className="flex justify-center">
+                        <p>No pros found in your area</p>
+                    </div>
+
+                    :
+                    pros.filter(pro => pro.sid !== user_id && pro.competencies[`${props.task.category}`] === true).map((pro, idx) => (<ProCard id={idx} pro={pro} />))
+
+                }
+            </>
+        )
+    }
 
 }
